@@ -4,7 +4,7 @@
       <a href="/" id="link-logo" class="brand-link icone-img link-logo">
         <span class="fa-stack">
           <img src="{{ asset('img/logo.png') }}" class="img-fluid ml-1" >
-          <span class="brand-text font-weight-light">LivrariaBD</span>
+          <span class="brand-text font-weight-light">SGIRA</span>
         </span>
       </a>
     </span>
@@ -19,7 +19,7 @@
           </a>
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+          <a href="#" class="d-block">Admin</a>
         </div>
         <div class="info align-self-center">
           <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

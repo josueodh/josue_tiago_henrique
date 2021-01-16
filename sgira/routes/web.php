@@ -19,4 +19,19 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::middleware('auth')->group(function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/grafico', function () {
+        return view('chart.approval');
+    });
+    Route::get('/comunicado', function () {
+        return view('warnings.classEmail');
+    });
+
+    Route::resource('/cursos', 'CourseController')->names('courses')->parameters(['cursos' => 'course']);
+    Route::prefix('notificacoes')->group(function () {
+        Route::get('/', 'NotificationController@index')->name('notifications.index');
+        Route::get('/{category}', 'NotificationController@show')->name('notifications.show');
+        Route::get('/leitura/{notify}', 'NotificationController@read')->name('notifications.read');
+    });
+});

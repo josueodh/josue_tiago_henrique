@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>LivrariaBD</title>
+    <title>SGIRA</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     @stack('styles')
 </head>
@@ -22,6 +22,26 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link"  data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                      <i class="far fa-bell fa-2x {{ (Auth::user()->unreadNotifications->count() > 0) ? 'red-bell' : ''}}"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                      <span class="dropdown-item dropdown-header">{{ Auth::user()->unreadNotifications->count() }} Notificações</span>
+                      <div class="dropdown-divider"></div>
+                      @foreach(Auth::user()->unreadNotifications->take(3) as $notification)
+                          <a href="{{ route('notifications.read', $notification ) }}" class="dropdown-item">
+                            <i class="{{ $notification->data['icon'] }} mr-2"></i>{{ $notification->data['title']}}
+                            <span class="float-right text-muted text-sm">{{ $notification->created_at->diffForHumans() }}</span>
+                          </a>
+                          <div class="dropdown-divider"></div>
+                      @endforeach
+                      <div class="dropdown-divider"></div>
+                      <a href="{{ route('notifications.index') }}" class="dropdown-item dropdown-footer">Veja todas as Notificações</a>
+                    </div>
                 </li>
             </ul>
 
