@@ -29,6 +29,10 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::resource('/cursos', 'CourseController')->names('courses')->parameters(['cursos' => 'course']);
+
+    Route::resource('/alunos', 'AlunoController')->names('alunos')->parameters(['alunos' => 'aluno']);
+
+
     Route::prefix('notificacoes')->group(function () {
         Route::get('/', 'NotificationController@index')->name('notifications.index');
         Route::get('/{category}', 'NotificationController@show')->name('notifications.show');

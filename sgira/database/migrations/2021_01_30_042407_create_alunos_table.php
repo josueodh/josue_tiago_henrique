@@ -17,7 +17,7 @@ class CreateAlunosTable extends Migration
             $table->id();
             $table->timestamps();            
             $table->integer('numeroMatricula');
-            $table->text('curso');
+            $table->text('curso')->nullable();
             $table->enum('status', ['ativo', 'trancado']);
             $table->float('ira', 4, 2);
         });

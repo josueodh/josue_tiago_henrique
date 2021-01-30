@@ -14,11 +14,9 @@ class AlunoController extends Controller
      */
     public function index()
     {
-        $alunos = Aluno::query()
-            ->orderBy('nome')
-            ->get();
+        $alunos = Aluno::all();
         
-            return view('alunos.index', compact('alunos'));
+        return view('alunos.index', compact('alunos'));
     }
 
     /**
