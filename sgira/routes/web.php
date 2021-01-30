@@ -31,6 +31,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('/cursos', 'CourseController')->names('courses')->parameters(['cursos' => 'course']);
 
     Route::resource('/alunos', 'AlunoController')->names('alunos')->parameters(['alunos' => 'aluno']);
+    
+    Route::resource('/professors', 'ProfessorController')->names('professors')->parameters(['professors' => 'professor']);
 
 
     Route::prefix('notificacoes')->group(function () {
