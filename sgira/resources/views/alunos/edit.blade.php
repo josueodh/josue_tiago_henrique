@@ -3,11 +3,11 @@
 @section('content')
 
     @component('components.edit')
-        @slot('title', 'Editar Curso')
-        @slot('back', route('courses.index'))
-        @slot('update', route('courses.update', $course->id))
+        @slot('title', 'Editar aluno')
+        @slot('back', route('alunos.index'))
+        @slot('update', route('alunos.update', $aluno->id))
         @slot('form')
-            @include('courses.form')
+            @include('alunos.form')
         @endslot
     @endcomponent
 @endsection
