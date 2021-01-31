@@ -17,6 +17,7 @@ class CreateProfessorsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->integer('numeroSIAPE');
+            $table->text('name')->nullable();
         });
     }
 

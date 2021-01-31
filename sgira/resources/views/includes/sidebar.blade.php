@@ -42,6 +42,20 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="/alunos" class="nav-link {{ Route::is('home') ? 'active' : '' }}">
+              <p>
+                Alunos
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/professors" class="nav-link {{ Route::is('home') ? 'active' : '' }}">
+              <p>
+                Professores
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

@@ -2,7 +2,7 @@
 
 @section('content')
     @component('components.index')
-        @slot('title','professors')
+        @slot('title','Professores')
         @slot('create', route('professors.create'))
         @slot('header')
         <tr>
