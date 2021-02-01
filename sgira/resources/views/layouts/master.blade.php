@@ -89,7 +89,27 @@
 
     <!-- ./wrapper -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $(function() {
+                $('.select2').select2({
+                    placeholder: 'Selecione',
+                    allowClear:true,
+                });
+            });
+            $('select[value]').each(function () {
+                $(this).val($(this).attr('value'));
+            });
+            $('.multiple[value]').each(function(){
+                var value = $(this).attr('value');
+                if (value) {
+                    value = JSON.parse(value);
+                }
+                $(this).val(value);
+            });
 
+        });
+    </script>
     @stack('scripts')
 
 </body>

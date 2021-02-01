@@ -11,7 +11,7 @@
     <div class="col-12 form-group">
         <label for="duration" class="required">Duração</label>
         <div class="input-group mb-3">
-            <input type="number" class="form-control @error('duration') is-invalid @enderror" required value="{{ old('duration', $duration->duration ) }}" name="duration"  id="duration">
+            <input type="number" class="form-control @error('duration') is-invalid @enderror" required value="{{ old('duration', $course->duration ) }}" name="duration"  id="duration">
             <div class="input-group-append">
               <span class="input-group-text" id="basic-addon2">horas</span>
             </div>

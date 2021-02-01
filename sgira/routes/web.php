@@ -29,6 +29,7 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::resource('/cursos', 'CourseController')->names('courses')->parameters(['cursos' => 'course']);
+    Route::resource('/materias', 'SubjectController')->names('subjects')->parameters(['materias' => 'subject']);
 
     Route::resource('/alunos', 'AlunoController')->names('alunos')->parameters(['alunos' => 'aluno']);
 

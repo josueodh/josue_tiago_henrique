@@ -59,7 +59,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/" class="nav-link {{ Route::is('home') ? 'active' : '' }}">
+            <a href="{{ route('subjects.index') }}" class="nav-link {{ Route::is('home') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-book"></i>
               <p>
                 Matérias
@@ -67,7 +67,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/" class="nav-link {{ Route::is('home') ? 'active' : '' }}">
+            <a href="{{ route('courses.index') }}" class="nav-link {{ Route::is('courses.*') ? 'active' : '' }}">
             <i class="nav-icon fas fa-university"></i>
               <p>
                 Cursos
