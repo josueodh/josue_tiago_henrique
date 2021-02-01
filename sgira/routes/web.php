@@ -13,13 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
 Route::middleware('auth')->group(function () {
+
+    Route::get('/', function () {
+        return view('layouts.master');
+    });
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/grafico', function () {
         return view('chart.approval');
@@ -31,7 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('/cursos', 'CourseController')->names('courses')->parameters(['cursos' => 'course']);
 
     Route::resource('/alunos', 'AlunoController')->names('alunos')->parameters(['alunos' => 'aluno']);
-    
+
     Route::resource('/professors', 'ProfessorController')->names('professors')->parameters(['professors' => 'professor']);
 
 
