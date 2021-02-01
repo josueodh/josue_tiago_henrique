@@ -36,4 +36,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+
+    public function getLevelAttribute()
+    {
+        if ($this->is_admin == 0) {
+            return 'Aluno';
+        } elseif ($this->is_admin == 1) {
+            return 'Professor';
+        } else {
+            return 'Admin';
+        }
+    }
 }
