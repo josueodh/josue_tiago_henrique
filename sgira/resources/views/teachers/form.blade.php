@@ -9,14 +9,36 @@
         @enderror
     </div>
     <div class="col-12 form-group">
-        <label for="numeroSIAPE" class="required">SIAPE</label>
-        <div class="input-group mb-3">
-            <input type="number" class="form-control " required value="{{ old('numeroSIAPE', $teacher->numeroSIAPE ) }}" name="numeroSIAPE"  id="numeroSIAPE">
-            <div class="input-group-append">
-              <span class="input-group-text" id="basic-addon2">numeroSIAPE</span>
+        <label for="siape" class="required">E-mail</label>
+        <input type="email" class="form-control " required value="{{ old('siape', $teacher->email ) }}" name="email"  id="email">
+        @error('email')
+            <div class="invalid-feedback">
+                <strong>{{ $message }}</strong>
             </div>
-        </div>
-        @error('numeroSIAPE')
+        @enderror
+    </div>
+    <div class="col-12 form-group">
+        <label for="siape" class="required">SIAPE</label>
+        <input type="number" class="form-control " required value="{{ old('siape', $teacher->siape ) }}" name="siape"  id="siape">
+        @error('siape')
+            <div class="invalid-feedback">
+                <strong>{{ $message }}</strong>
+            </div>
+        @enderror
+    </div>
+    <div class="col-md-6 col-sm-12 form-group">
+        <label for="confirm_password" class="required">Senha</label>
+        <input type="password" class="form-control " required name="confirm_password"  id="confirm_password">
+        @error('confirm_password')
+            <div class="invalid-feedback">
+                <strong>{{ $message }}</strong>
+            </div>
+        @enderror
+    </div>
+    <div class="col-md-6 col-sm-12 form-group">
+        <label for="password" class="required">Confirme sua senha</label>
+        <input type="password" class="form-control " required  name="password"  id="password">
+        @error('password')
             <div class="invalid-feedback">
                 <strong>{{ $message }}</strong>
             </div>
