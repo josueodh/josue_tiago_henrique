@@ -16,7 +16,7 @@ class TeamController extends Controller
     public function index()
     {
         $teams = Team::all();
-        return view('teams.index',compact('teams'));
+        return view('teams.index', compact('teams'));
     }
 
     /**
@@ -26,9 +26,9 @@ class TeamController extends Controller
      */
     public function create()
     {
-        $team = New Team();
+        $team = new Team();
         $students = User::all();
-        return view('teams.create',compact('team','students'));
+        return view('teams.create', compact('team', 'students'));
     }
 
     /**
@@ -40,7 +40,7 @@ class TeamController extends Controller
     public function store(Request $request)
     {
         Team::create($request->all());
-        return redirect()->route('teams.index')->with('success',true);
+        return redirect()->route('teams.index')->with('success', true);
     }
 
     /**
@@ -52,7 +52,7 @@ class TeamController extends Controller
     public function show(Team $team)
     {
         $students = User::all();
-        return view('teams.show',compact('team','students'));
+        return view('teams.show', compact('team', 'students'));
     }
 
     /**
@@ -64,7 +64,7 @@ class TeamController extends Controller
     public function edit(Team $team)
     {
         $students = User::all();
-        return view('teams.edit',compact('team','students'));
+        return view('teams.edit', compact('team', 'students'));
     }
 
     /**
@@ -78,7 +78,7 @@ class TeamController extends Controller
     {
         $team->update($request->all());
         $team->students()->sync($request->student_id);
-        return redirect()->route('teams.index')->with('success',true);
+        return redirect()->route('teams.index')->with('success', true);
     }
 
     /**
@@ -91,6 +91,6 @@ class TeamController extends Controller
     {
         $team->students()->detach();
         $team->delete();
-        return redirect()->route('teams.index')->with('success',true);
+        return redirect()->route('teams.index')->with('success', true);
     }
 }
