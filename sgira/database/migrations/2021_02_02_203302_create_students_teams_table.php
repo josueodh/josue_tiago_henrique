@@ -18,7 +18,7 @@ class CreateStudentsTeamsTable extends Migration
             $table->timestamps();
             $table->unsignedBigInteger('student_id');
             $table->unsignedBigInteger('team_id');
-            $table->foreign('student_id')->references('id')->on('alunos')->onDelete('cascade');
+            $table->foreign('student_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade');
         });
     }
