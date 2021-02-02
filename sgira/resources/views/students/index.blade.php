@@ -3,7 +3,7 @@
 @section('content')
     @component('components.index')
         @slot('title','Alunos')
-        @slot('create', route('alunos.create'))
+        @slot('create', route('students.create'))
         @slot('header')
         <tr>
             <th>Nome</th>
@@ -13,14 +13,14 @@
         </tr>
         @endslot
         @slot('body')
-            @foreach($alunos as $aluno)
+            @foreach($students as $student)
                 <tr>
-                    <td>{{ $aluno->name }}</td>
-                    <td>{{ $aluno->numeroMatricula }}</td>
-                    <td>{{ $aluno->ira }}</td>
+                    <td>{{ $student->name }}</td>
+                    <td>{{ $student->numeroMatricula }}</td>
+                    <td>{{ $student->ira }}</td>
                     <td class="button-index">
-                        <a href="{{ route('alunos.edit', $aluno->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                        <form class="form-delete" action="{{ route('alunos.destroy', $aluno->id) }}" method="post">
+                        <a href="{{ route('students.edit', $student->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                        <form class="form-delete" action="{{ route('students.destroy', $student->id) }}" method="post">
                             @csrf
                             @method('delete')
                             <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>

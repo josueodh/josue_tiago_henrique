@@ -4,10 +4,10 @@
 
     @component('components.create')
         @slot('title', 'Criar professor')
-        @slot('back', route('professors.index'))
-        @slot('store', route('professors.store'))
+        @slot('back', route('teachers.index'))
+        @slot('store', route('teachers.store'))
         @slot('form')
-            @include('professors.createform')
+            @include('teachers.createform')
         @endslot
     @endcomponent
 @endsection

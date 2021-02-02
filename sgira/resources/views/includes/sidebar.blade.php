@@ -43,7 +43,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/alunos" class="nav-link {{ Route::is('home') ? 'active' : '' }}">
+            <a href="/students" class="nav-link {{ Route::is('home') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-user-graduate"></i>
                 <p>
                 Alunos
@@ -51,7 +51,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/professors" class="nav-link {{ Route::is('home') ? 'active' : '' }}">
+            <a href="/teachers" class="nav-link {{ Route::is('home') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-chalkboard-teacher"></i>
                 <p>
                 Professores

@@ -4,10 +4,10 @@
 
     @component('components.edit')
         @slot('title', 'Editar professor')
-        @slot('back', route('professors.index'))
-        @slot('update', route('professors.update', $professor->id))
+        @slot('back', route('teachers.index'))
+        @slot('update', route('teachers.update', $teacher->id))
         @slot('form')
-            @include('professors.form')
+            @include('teachers.form')
         @endslot
     @endcomponent
 @endsection

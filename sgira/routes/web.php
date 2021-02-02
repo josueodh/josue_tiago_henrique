@@ -31,9 +31,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('/cursos', 'CourseController')->names('courses')->parameters(['cursos' => 'course']);
     Route::resource('/materias', 'SubjectController')->names('subjects')->parameters(['materias' => 'subject']);
 
-    Route::resource('/alunos', 'AlunoController')->names('alunos')->parameters(['alunos' => 'aluno']);
+    Route::resource('/students', 'StudentController')->names('students')->parameters(['students' => 'student']);
 
-    Route::resource('/professors', 'ProfessorController')->names('professors')->parameters(['professors' => 'professor']);
+    Route::resource('/teachers', 'TeacherController')->names('teachers')->parameters(['teachers' => 'teacher']);
 
 
     Route::prefix('notificacoes')->group(function () {

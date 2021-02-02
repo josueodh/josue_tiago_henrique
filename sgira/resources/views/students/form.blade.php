@@ -1,7 +1,7 @@
 <div class="row">
     <div class="form-group col-sm-12">
         <label for="name" class="required">Nome </label>
-        <input type="text" name="name" id="name" autofocus class="form-control @error('name') is-invalid @enderror" required value="{{ old('name',$aluno->name) }}">
+        <input type="text" name="name" id="name" autofocus class="form-control @error('name') is-invalid @enderror" required value="{{ old('name',$student->name) }}">
         @error('name')
             <div class="invalid-feedback">
                 <strong>{{ $message }}</strong>
@@ -11,7 +11,7 @@
     <div class="col-12 form-group">
         <label for="numeroMatricula" class="required">Matrícula</label>
         <div class="input-group mb-3">
-            <input type="number" class="form-control " required value="{{ old('numeroMatricula', $aluno->numeroMatricula ) }}" name="numeroMatricula"  id="numeroMatricula">
+            <input type="number" class="form-control " required value="{{ old('numeroMatricula', $student->numeroMatricula ) }}" name="numeroMatricula"  id="numeroMatricula">
             <div class="input-group-append">
               <span class="input-group-text" id="basic-addon2">numeroMatricula</span>
             </div>
@@ -25,7 +25,7 @@
     <div class="col-12 form-group">
         <label for="ira" class="required">IRA</label>
         <div class="input-group mb-3">
-            <input type="number" class="form-control @error('ira') is-invalid @enderror" required value="{{ old('ira', $aluno->ira ) }}" name="ira"  id="ira">
+            <input type="number" class="form-control @error('ira') is-invalid @enderror" required value="{{ old('ira', $student->ira ) }}" name="ira"  id="ira">
             <div class="input-group-append">
               <span class="input-group-text" id="basic-addon2">IRA:</span>
             </div>
@@ -36,4 +36,5 @@
             </div>
         @enderror
     </div>
+    <input type="hidden" id="is_admin" name="is_admin" value="0">
 </div>

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Professor;
 use Illuminate\Http\Request;
+use App\User;
 
-class ProfessorController extends Controller
+class StudentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,8 @@ class ProfessorController extends Controller
      */
     public function index()
     {
-        $professors = Professor::all();
-        
-        return view('professors.index', compact('professors'));
+        $students = User::where('is_admin', 0)->get();
+        return view('students.index', compact('students'));
     }
 
     /**
@@ -26,7 +25,8 @@ class ProfessorController extends Controller
      */
     public function create()
     {
-        return view('professors.create');
+        $student = new User();
+        return view('students.create', compact('student'));
     }
 
     /**
@@ -37,52 +37,54 @@ class ProfessorController extends Controller
      */
     public function store(Request $request)
     {
-        Professor::create($request->all());
-        return redirect()->route('professors.index')->with('success', true);    }
+        User::create($request->all());
+        return redirect()->route('students.index')->with('success', true);
+    }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Professor  $professor
+     * @param  User  $student
      * @return \Illuminate\Http\Response
      */
-    public function show(Professor $professor)
+    public function show(User $student)
     {
-        return view('professors.show', compact('professor'));
+        return view('students.show', compact('student'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Professor  $professor
+     * @param  User  $student
      * @return \Illuminate\Http\Response
      */
-    public function edit(Professor $professor)
+    public function edit(User $student)
     {
-        return view('professors.edit', compact('professor'));
+        return view('students.edit', compact('student'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Professor  $professor
+     * @param  User  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Professor $professor)
+    public function update(Request $request, User $student)
     {
-        $professor->update($request->all());
-        return redirect()->route('professors.index')->with('success', true);    }
+        $student->update($request->all());
+        return redirect()->route('students.index')->with('success', true);
+    }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Professor  $professor
+     * @param    $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Professor $professor)
+    public function destroy(User $student)
     {
-        $professor->delete();
-        return redirect()->route('professors.index')->with('success', true);
+        $student->delete();
+        return redirect()->route('students.index')->with('success', true);
     }
 }

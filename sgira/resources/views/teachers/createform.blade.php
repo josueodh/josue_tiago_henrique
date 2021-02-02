@@ -22,4 +22,5 @@
             </div>
         @enderror
     </div>
+    <input type="hidden" id="is_admin" name="is_admin" value="1">
 </div>

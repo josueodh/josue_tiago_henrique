@@ -36,4 +36,6 @@
             </div>
         @enderror
     </div>
+    <input type="hidden" id="is_admin" name="is_admin" value="0">
+
 </div>

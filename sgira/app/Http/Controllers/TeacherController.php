@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Aluno;
 use Illuminate\Http\Request;
+use App\User;
 
-class AlunoController extends Controller
+class TeacherController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,8 @@ class AlunoController extends Controller
      */
     public function index()
     {
-        $alunos = Aluno::all();
-        
-        return view('alunos.index', compact('alunos'));
+        $teachers = User::where('is_admin', 1)->get();
+        return view('teachers.index', compact('teachers'));
     }
 
     /**
@@ -26,7 +25,8 @@ class AlunoController extends Controller
      */
     public function create()
     {
-        return view('alunos.create');
+        $teacher = new User;
+        return view('teachers.create', compact('teacher'));
     }
 
     /**
@@ -37,54 +37,54 @@ class AlunoController extends Controller
      */
     public function store(Request $request)
     {
-        Aluno::create($request->all());
-        return redirect()->route('alunos.index')->with('success', true);
+        User::create($request->all());
+        return redirect()->route('teachers.index')->with('success', true);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Aluno  $aluno
+     * @param  User $teacher
      * @return \Illuminate\Http\Response
      */
-    public function show(Aluno $aluno)
+    public function show(User $teacher)
     {
-        return view('alunos.show', compact('aluno'));
+        return view('teachers.show', compact('teacher'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Aluno  $aluno
+     * @param  User $teacher
      * @return \Illuminate\Http\Response
      */
-    public function edit(Aluno $aluno)
+    public function edit(User $teacher)
     {
-        return view('alunos.edit', compact('aluno'));
+        return view('teachers.edit', compact('teacher'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Aluno  $aluno
+     * @param  User $teacher
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Aluno $aluno)
+    public function update(Request $request, User $teacher)
     {
-        $aluno->update($request->all());
-        return redirect()->route('alunos.index')->with('success', true);
+        $teacher->update($request->all());
+        return redirect()->route('teachers.index')->with('success', true);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Aluno  $aluno
+     * @param  User $teacher
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Aluno $aluno)
+    public function destroy(User $teacher)
     {
-        $aluno->delete();
-        return redirect()->route('alunos.index')->with('success', true);
+        $teacher->delete();
+        return redirect()->route('teachers.index')->with('success', true);
     }
 }
