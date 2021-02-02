@@ -22,7 +22,7 @@ Route::middleware('auth')->group(function () {
     });
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/grafico', function () {
-        return view('chart.approval');
+        return view('charts.approval');
     });
     Route::get('/comunicado', function () {
         return view('warnings.classEmail');

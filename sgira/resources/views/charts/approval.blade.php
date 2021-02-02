@@ -12,4 +12,4 @@
         </div>
     </div>
 @endsection
-<script src="{{ asset('js/charts/aproval.js') }}"></script>
+<script src="{{ asset('js/charts/approval.js') }}"></script>
