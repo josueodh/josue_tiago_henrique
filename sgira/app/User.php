@@ -49,4 +49,9 @@ class User extends Authenticatable
             return 'Admin';
         }
     }
+
+    public function teams()
+    {
+        return $this->belongsToMany('App\Team', 'students_teams', 'student_id', 'team_id');
+    }
 }
