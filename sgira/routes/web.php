@@ -35,6 +35,10 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('/professores', 'TeacherController')->names('teachers')->parameters(['professores' => 'teacher']);
 
+    Route::resource('/turmas', 'TeamController')->names('teams')->parameters(['turmas' => 'team']);
+
+    Route::resource('/parceiros', 'PartnerController')->names('partners')->parameters(['parceiros' => 'partner']);;
+
 
     Route::prefix('notificacoes')->group(function () {
         Route::get('/', 'NotificationController@index')->name('notifications.index');

@@ -66,6 +66,22 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="/turmas" class="nav-link {{ Route::is('turmas') ? 'active' : '' }}">
+            <i class="nav-icon fas fa-users"></i>
+              <p>
+                Turmas
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/parceiros" class="nav-link {{ Route::is('parceiros') ? 'active' : '' }}">
+            <i class="nav-icon fas fa-handshake"></i>
+              <p>
+                Parceiros
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
