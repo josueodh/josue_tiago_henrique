@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Team;
-use App\Aluno;
+use App\User;
 use Illuminate\Http\Request;
 
 class TeamController extends Controller
@@ -27,7 +27,7 @@ class TeamController extends Controller
     public function create()
     {
         $team = New Team();
-        $students = Aluno::all();
+        $students = User::all();
         return view('teams.create',compact('team','students'));
     }
 
@@ -51,7 +51,7 @@ class TeamController extends Controller
      */
     public function show(Team $team)
     {
-        $students = Aluno::all();
+        $students = User::all();
         return view('teams.show',compact('team','students'));
     }
 
@@ -63,7 +63,7 @@ class TeamController extends Controller
      */
     public function edit(Team $team)
     {
-        $students = Aluno::all();
+        $students = User::all();
         return view('teams.edit',compact('team','students'));
     }
 

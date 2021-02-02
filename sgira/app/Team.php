@@ -13,7 +13,7 @@ class Team extends Model
 
     public function students()
     {
-        return $this->belongsToMany('App\Aluno');
+        return $this->belongsToMany('App\User');
     }
 
 }
