@@ -15,8 +15,6 @@ class CreateTeamsTable extends Migration
     {
         Schema::create('teams', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('student_id')->nullable();
-            $table->foreign('student_id')->on('users')->references('id')->onDelete('cascade');
             $table->string('theme')->nullable();
             $table->string('date');
             $table->timestamps();
