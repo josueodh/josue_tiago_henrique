@@ -7,7 +7,7 @@
         @slot('back', route('students.index'))
         @slot('store', route('students.store'))
         @slot('form')
-            @include('students.createform')
+            @include('students.form')
         @endslot
     @endcomponent
 @endsection
