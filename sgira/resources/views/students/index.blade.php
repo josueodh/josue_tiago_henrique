@@ -16,7 +16,7 @@
             @foreach($students as $student)
                 <tr>
                     <td>{{ $student->name }}</td>
-                    <td>{{ $student->numeroMatricula }}</td>
+                    <td>{{ $student->registration }}</td>
                     <td>{{ $student->ira }}</td>
                     <td class="button-index">
                         <a href="{{ route('students.edit', $student->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>

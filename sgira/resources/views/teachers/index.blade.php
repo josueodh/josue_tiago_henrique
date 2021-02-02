@@ -15,7 +15,7 @@
             @foreach($teachers as $teacher)
                 <tr>
                     <td>{{ $teacher->name }}</td>
-                    <td>{{ $teacher->numeroSIAPE }}</td>
+                    <td>{{ $teacher->registration }}</td>
                     <td class="button-index">
                         <a href="{{ route('teachers.edit', $teacher->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
                         <form class="form-delete" action="{{ route('teachers.destroy', $teacher->id) }}" method="post">

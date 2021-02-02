@@ -9,8 +9,8 @@
         @enderror
     </div>
     <div class="col-12 form-group">
-        <label for="siape" class="required">E-mail</label>
-        <input type="email" class="form-control " required value="{{ old('siape', $teacher->email ) }}" name="email"  id="email">
+        <label for="email" class="required">E-mail</label>
+        <input type="email" class="form-control " required value="{{ old('email', $teacher->email ) }}" name="email"  id="email">
         @error('email')
             <div class="invalid-feedback">
                 <strong>{{ $message }}</strong>
@@ -18,9 +18,9 @@
         @enderror
     </div>
     <div class="col-12 form-group">
-        <label for="siape" class="required">SIAPE</label>
-        <input type="number" class="form-control " required value="{{ old('siape', $teacher->siape ) }}" name="siape"  id="siape">
-        @error('siape')
+        <label for="registration" class="required">SIAPE</label>
+        <input type="number" class="form-control " required value="{{ old('registration', $teacher->registration ) }}" name="registration"  id="registration">
+        @error('registration')
             <div class="invalid-feedback">
                 <strong>{{ $message }}</strong>
             </div>
