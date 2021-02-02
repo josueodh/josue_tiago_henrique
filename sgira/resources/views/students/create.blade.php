@@ -4,10 +4,10 @@
 
     @component('components.create')
         @slot('title', 'Criar aluno')
-        @slot('back', route('alunos.index'))
-        @slot('store', route('alunos.store'))
+        @slot('back', route('students.index'))
+        @slot('store', route('students.store'))
         @slot('form')
-            @include('alunos.createform')
+            @include('students.createform')
         @endslot
     @endcomponent
 @endsection
