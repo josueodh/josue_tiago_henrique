@@ -7,7 +7,6 @@
         @slot('header')
         <tr>
             <th>Nome</th>
-            <th>Código</th>
             <th>Duração</th>
             <th></th>
         </tr>
