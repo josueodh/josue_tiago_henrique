@@ -33,7 +33,7 @@
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">         
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
             <a href="{{ route('students.index') }}" class="nav-link {{ Route::is('students.*') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-user-graduate"></i>
@@ -51,7 +51,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('subjects.index') }}" class="nav-link {{ Route::is('home') ? 'active' : '' }}">
+            <a href="{{ route('subjects.index') }}" class="nav-link {{ Route::is('subjects.*') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-book"></i>
               <p>
                 Matérias

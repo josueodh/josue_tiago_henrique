@@ -14,7 +14,7 @@
     @if(Route::currentRouteName() == 'partners.edit' || Route::currentRouteName() == 'partners.show')
     <div class="form-group col-12">
             <div class="d-flex justify-content-center">
-                <img class="img-responsive" width="200" height="200" src="{{ asset('/storage/'.$partner->imglink) }}" alt="Imagem do parceiro {{ $partner->name }}" />
+                <img loading="lazy" class="img-responsive" width="200" height="200" src="{{ asset('/storage/'.$partner->imglink) }}" alt="Imagem do parceiro {{ $partner->name }}" />
             </div>
         </div>
     @endif
