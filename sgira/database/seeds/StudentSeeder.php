@@ -11,6 +11,6 @@ class StudentSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\User::class, 1000)->state('students')->create();
+        factory(App\User::class, 10)->state('students')->create();
     }
 }
