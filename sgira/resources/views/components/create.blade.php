@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class="card-body">
-            <form id="form-adicionar" action="{{ $store ?? '/' }}" method="post">
+            <form id="form-adicionar" action="{{ $store ?? '/' }}" method="post" enctype="multipart/form-data">
                 @csrf
                 {{ $form ?? null }}
             </form>

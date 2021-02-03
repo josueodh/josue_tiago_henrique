@@ -15,7 +15,7 @@ class PartnerController extends Controller
     public function index()
     {
         $partners = Partner::all();
-        return view('partners.index',compact('partners'));
+        return view('partners.index', compact('partners'));
     }
 
     /**
@@ -25,8 +25,8 @@ class PartnerController extends Controller
      */
     public function create()
     {
-        $partner = New Partner();
-        return view('partners.create',compact('partner'));
+        $partner = new Partner();
+        return view('partners.create', compact('partner'));
     }
 
     /**
@@ -38,9 +38,9 @@ class PartnerController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $data = uploadFile('logo', 'img/partners', $data, $request);
+        $data = uploadFile('imglink', 'img/partners/', $data, $request);
         Partner::create($data);
-        return redirect()->route('partners.index')->with('success',true);
+        return redirect()->route('partners.index')->with('success', true);
     }
 
     /**
@@ -51,7 +51,7 @@ class PartnerController extends Controller
      */
     public function show(Partner $partner)
     {
-        return view('partners.show',compact('partner'));
+        return view('partners.show', compact('partner'));
     }
 
     /**
@@ -62,8 +62,8 @@ class PartnerController extends Controller
      */
     public function edit(Partner $partner)
     {
-        
-        return view('partners.edit',compact('partner'));
+
+        return view('partners.edit', compact('partner'));
     }
 
     /**
@@ -76,9 +76,10 @@ class PartnerController extends Controller
     public function update(Request $request, Partner $partner)
     {
         $data = $request->all();
-        $data = uploadFile('logo', 'img/partners', $data, $request);
+        $data = uploadFile('imglink', 'img/partners', $data, $request);
+
         $partner->update($data);
-        return redirect()->route('partners.index')->with('success',true);
+        return redirect()->route('partners.index')->with('success', true);
     }
 
     /**
@@ -90,6 +91,6 @@ class PartnerController extends Controller
     public function destroy(Partner $partner)
     {
         $partner->delete();
-        return redirect()->route('partners.index')->with('success',true);
+        return redirect()->route('partners.index')->with('success', true);
     }
 }
