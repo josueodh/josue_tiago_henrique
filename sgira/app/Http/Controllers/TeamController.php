@@ -27,8 +27,9 @@ class TeamController extends Controller
     public function create()
     {
         $team = new Team();
-        $students = User::all();
-        return view('teams.create', compact('team', 'students'));
+        $students = User::where('is_admin', 0)->get();
+        $teachers = User::where('is_admin', 1)->get();
+        return view('teams.create', compact('team', 'students', 'teachers'));
     }
 
     /**
@@ -52,8 +53,9 @@ class TeamController extends Controller
      */
     public function show(Team $team)
     {
-        $students = User::all();
-        return view('teams.show', compact('team', 'students'));
+        $students = User::where('is_admin', 0)->get();
+        $teachers = User::where('is_admin', 1)->get();
+        return view('teams.show', compact('team', 'students', 'teachers'));
     }
 
     /**
@@ -64,8 +66,9 @@ class TeamController extends Controller
      */
     public function edit(Team $team)
     {
-        $students = User::all();
-        return view('teams.edit', compact('team', 'students'));
+        $students = User::where('is_admin', 0)->get();
+        $teachers = User::where('is_admin', 1)->get();
+        return view('teams.edit', compact('team', 'students', 'teachers'));
     }
 
     /**

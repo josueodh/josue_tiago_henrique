@@ -18,8 +18,6 @@ class CreateSubjectsTable extends Migration
             $table->string('name');
             $table->string('code');
             $table->integer('credits');
-            $table->unsignedBigInteger('teacher_id')->nullable();
-            $table->foreign('teacher_id')->references('id')->on('users')->onDelete('SET NULL');
             $table->timestamps();
         });
     }

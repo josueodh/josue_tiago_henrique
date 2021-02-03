@@ -6,11 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Team extends Model
 {
-    protected $fillable = [
-        'year',
-        'semester',
-        'name',
-    ];
+    protected $guarded = ['id', 'created_at', 'updated_at'];
+
+    public function teacher()
+    {
+        return $this->belongsTo('App\User');
+    }
 
     public function students()
     {

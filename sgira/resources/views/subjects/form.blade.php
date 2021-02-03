@@ -45,18 +45,4 @@
             </div>
         @enderror
     </div>
-    <div class="col-sm-12 form-group">
-        <label for="code" class="required">Professor</label>
-        <select name="teacher_id"  required value="{{ old('teacher_id',$subject->teacher_id ) }}" class="form-control select2 @error('teacher_id') is-invalid @enderror multiple" id="teacher_id">
-            <option></option>
-            @foreach($teachers as $teacher)
-                <option value="{{ $teacher->id }}">{{ $teacher->name }}</option>
-            @endforeach
-        </select>
-        @error('code')
-            <div class="invalid-feedback">
-                <strong>{{ $message }}</strong>
-            </div>
-        @enderror
-    </div>
 </div>
