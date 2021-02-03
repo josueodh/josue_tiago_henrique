@@ -37,6 +37,7 @@ class PartnerController extends Controller
      */
     public function store(Request $request)
     {
+        $data = uploadFile('logo', 'img/companies/logo', $data, $request);
         Partner::create($request->all());
         return redirect()->route('partners.index')->with('success',true);
     }
@@ -60,8 +61,8 @@ class PartnerController extends Controller
      */
     public function edit(Partner $partner)
     {
-        return view('partners.edit',compact('partner'));
         $data = uploadFile('logo', 'img/companies/logo', $data, $request);
+        return view('partners.edit',compact('partner'));
     }
 
     /**
@@ -74,6 +75,7 @@ class PartnerController extends Controller
     public function update(Request $request, Partner $partner)
     {
         $partner->update($request->all());
+        $data = uploadFile('logo', 'img/companies/logo', $data, $request);
         return redirect()->route('partners.index')->with('success',true);
     }
 

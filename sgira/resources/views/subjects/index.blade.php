@@ -9,7 +9,7 @@
             <th>Nome</th>
             <th>Código</th>
             <th>Creditos</th>
-            <th></th>
+            <th>Ações</th>
         </tr>
         @endslot
         @slot('body')

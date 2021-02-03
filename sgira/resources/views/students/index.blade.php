@@ -9,7 +9,7 @@
             <th>Nome</th>
             <th>Matrícula</th>
             <th>IRA</th>
-            <th></th>
+            <th>Ações</th>
         </tr>
         @endslot
         @slot('body')
