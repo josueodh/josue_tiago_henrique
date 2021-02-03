@@ -67,7 +67,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/turmas" class="nav-link {{ Route::is('turmas') ? 'active' : '' }}">
+            <a href="/turmas" class="nav-link {{ Route::is('teams.*') ? 'active' : '' }}">
             <i class="nav-icon fas fa-users"></i>
               <p>
                 Turmas
@@ -75,7 +75,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/parceiros" class="nav-link {{ Route::is('parceiros') ? 'active' : '' }}">
+            <a href="/parceiros" class="nav-link {{ Route::is('partners.*') ? 'active' : '' }}">
             <i class="nav-icon fas fa-handshake"></i>
               <p>
                 Parceiros
