@@ -17,4 +17,9 @@ class Team extends Model
     {
         return $this->belongsToMany('App\User', 'students_teams', 'team_id', 'student_id');
     }
+
+    public function subject()
+    {
+        return $this->belongsTo('App\Subject');
+    }
 }

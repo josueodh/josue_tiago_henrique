@@ -33,13 +33,13 @@
         @enderror
     </div>
     <div class="col-sm-12 form-group">
-        <label for="code" class="required">Curso</label>
+        <label for="course_id" class="required">Curso</label>
         <select name="course_id[]" required multiple value="{{ json_encode(old('course_id',$subject->courses->pluck('id'))) }}" class="form-control select2 @error('course_id') is-invalid @enderror multiple" id="course_id">
             @foreach($courses as $course)
                 <option value="{{ $course->id }}">{{ $course->name }}</option>
             @endforeach
         </select>
-        @error('code')
+        @error('course_id')
             <div class="invalid-feedback">
                 <strong>{{ $message }}</strong>
             </div>

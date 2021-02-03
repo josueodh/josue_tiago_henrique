@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Subject;
 use App\Team;
 use App\User;
 use Illuminate\Http\Request;
@@ -27,9 +28,10 @@ class TeamController extends Controller
     public function create()
     {
         $team = new Team();
+        $subjects = Subject::all();
         $students = User::where('is_admin', 0)->get();
         $teachers = User::where('is_admin', 1)->get();
-        return view('teams.create', compact('team', 'students', 'teachers'));
+        return view('teams.create', compact('team', 'students', 'teachers', 'subjects'));
     }
 
     /**
@@ -55,7 +57,8 @@ class TeamController extends Controller
     {
         $students = User::where('is_admin', 0)->get();
         $teachers = User::where('is_admin', 1)->get();
-        return view('teams.show', compact('team', 'students', 'teachers'));
+        $subjects = Subject::all();
+        return view('teams.show', compact('team', 'students', 'teachers', 'subjects'));
     }
 
     /**
@@ -68,7 +71,8 @@ class TeamController extends Controller
     {
         $students = User::where('is_admin', 0)->get();
         $teachers = User::where('is_admin', 1)->get();
-        return view('teams.edit', compact('team', 'students', 'teachers'));
+        $subjects = Subject::all();
+        return view('teams.edit', compact('team', 'students', 'teachers', 'subjects'));
     }
 
     /**

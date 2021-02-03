@@ -54,4 +54,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Team', 'students_teams', 'student_id', 'team_id');
     }
+
+    public function minister()
+    {
+        return $this->hasMany('App\Team');
+    }
 }

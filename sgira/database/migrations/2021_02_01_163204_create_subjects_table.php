@@ -20,6 +20,11 @@ class CreateSubjectsTable extends Migration
             $table->integer('credits');
             $table->timestamps();
         });
+
+        Schema::table('teams', function (Blueprint $table) {
+            $table->unsignedBigInteger('subject_id');
+            $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('cascade');
+        });
     }
 
     /**

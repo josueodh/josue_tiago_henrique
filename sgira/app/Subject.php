@@ -17,4 +17,9 @@ class Subject extends Model
     {
         return $this->credits == 4 ? '60 horas' : '30 horas';
     }
+
+    public function teams()
+    {
+        return $this->hasMany('App\Team');
+    }
 }

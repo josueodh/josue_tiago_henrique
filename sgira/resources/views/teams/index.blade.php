@@ -7,13 +7,17 @@
         @slot('header')
         <tr>
             <th>Nome</th>
+            <th>Matéria</th>
+            <th>Professor</th>
             <th>Ações</th>
         </tr>
         @endslot
         @slot('body')
             @foreach($teams as $team)
                 <tr>
-                    <td>{{$team->name}}</td>
+                    <td>{{ $team->name }}</td>
+                    <td>{{ $team->subject->name }}</td>
+                    <td>{{ $team->teacher->name }}</td>
                     <td class="button-index">
                         <a href="{{ route('teams.edit', $team->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
                         <a href="{{ route('teams.show', $team->id) }}" class="btn btn-success"><i class="fas fa-eye"></i></a>
