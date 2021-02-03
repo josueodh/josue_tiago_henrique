@@ -36,7 +36,7 @@
         @enderror
     </div>
     <div class="col-sm-12 form-group">
-        <label for="subject_id" class="required">Professor</label>
+        <label for="subject_id" class="required">Matéria</label>
         <select name="subject_id"  required value="{{ old('subject_id',$team->subject_id ) }}" class="form-control select2 @error('subject_id') is-invalid @enderror" id="subject_id">
             <option></option>
             @foreach($subjects as $subject)

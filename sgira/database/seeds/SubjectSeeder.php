@@ -1,5 +1,6 @@
 <?php
 
+use App\Course;
 use Illuminate\Database\Seeder;
 
 class SubjectSeeder extends Seeder
@@ -11,6 +12,9 @@ class SubjectSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Subject::class, 50)->create();
+        factory(App\Subject::class, 50)->create()->each(function ($subject) {
+            $courses = Course::all()->random(3)->pluck('id');
+            $subject->courses()->attach($courses);
+        });
     }
 }
