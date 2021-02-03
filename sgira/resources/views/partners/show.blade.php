@@ -2,10 +2,10 @@
 @section('content')
     @component('components.show')
         @slot('title', 'Detalhes do Parceiro')
-        @slot('content')
-            @include('partners.form', ['create'=> false])
+        @slot('back', route('partners.index'))
+        @slot('form')
+            @include('partners.form')
         @endslot
-        @slot('back')
         @endslot
     @endcomponent
 @endsection
