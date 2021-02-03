@@ -1,5 +1,8 @@
 <div class="row">
- 
+    <div class="form-group col-12"> 
+        <label for="name" class="required">Nome</label>
+        <input type="text" autofocus required class="form-control" name="name" id="name" value="{{ old('name', $team->name) }}" placeholder="A,B,C,D" >
+    </div>
     <div class="form-group col-12">
         <label for="student_id" class="required">Alunos</label>
         <select name="student_id[]" class="form-control select2" id="student_id" multiple="multiple" required value="{{ json_encode(old('student_id',$team->students->pluck('id'))) }}">

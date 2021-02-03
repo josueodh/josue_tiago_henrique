@@ -7,10 +7,6 @@
         @endslot
         @slot('back')
         @endslot
-        @slot('form')
-        <th>Nome</th>
-        <td>{{ $partner->name }}</td>
-        @endslot
     @endcomponent
 @endsection
 

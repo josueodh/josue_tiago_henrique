@@ -9,6 +9,7 @@ class Team extends Model
     protected $fillable = [
         'year',
         'semester',
+        'name',
     ];
 
     public function students()
