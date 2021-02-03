@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Team extends Model
 {
     protected $fillable = [
-        'student_id',
-        'date',
+        'year',
+        'semester',
     ];
 
     public function students()

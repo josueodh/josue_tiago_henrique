@@ -1,6 +1,5 @@
 $(function() {
     $(".dataTable").DataTable({
-        columnDefs: [{ type: "date-eu", targets: 2 }],
         // Define a estrutura do HTML da datatable
         dom:
             '<"top row"<"col-md-6 col-12"l><"col-md-6 col-12"f>><"datatable"rt><"bottom row"<"col-md-6 col-12"i><"col-md-6 col-12"p>>',

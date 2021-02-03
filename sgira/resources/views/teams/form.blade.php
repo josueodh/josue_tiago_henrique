@@ -9,8 +9,15 @@
         </select>
     </div>
     <div class="form-group col-12">
-        <label for="date" class="required">Período </label>
-        <input type="text" required class="form-control" name="date" id="date" value="{{ old('date', $team->date) }}" placeholder="XXXX.X">
+        <label for="year" class="required">Ano </label>
+        <input type="number" min="2020" required class="form-control" name="year" id="year" value="{{ old('year', $team->year) }}" >
+    </div>
+    <div class="form-group col-12">
+        <label for="semester" class="required">Semestre </label>
+        <select name="semester" class="form-control" id="semester"  required>
+            <option value="1">Primeiro</option>
+            <option value="2">Segundo</option>
+        </select>
     </div>
 </div>
 

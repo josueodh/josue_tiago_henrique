@@ -14,4 +14,3 @@ function uploadFile($img, $path, $data, $request){
     }
     return $data;
 }
-?>

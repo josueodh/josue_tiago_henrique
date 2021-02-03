@@ -39,7 +39,7 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-        $team = Team::create(['date' => $request->date]);
+        $team = Team::create($request->all());
         $team->students()->attach($request->student_id);
         return redirect()->route('teams.index')->with('success', true);
     }

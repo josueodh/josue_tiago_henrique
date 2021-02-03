@@ -6,8 +6,7 @@
         @slot('create', route('partners.create'))
         @slot('header')
         <tr>
-            <th>ID</th>
-            <th></th>
+            <th>Nome</th>
             <th>Ações</th>
         </tr>
         @endslot
@@ -15,7 +14,6 @@
             @foreach($partners as $partner)
                 <tr>
                     <td>{{ $partner->name }}</td>
-                    <td></td>
                     <td class="button-index">
                         <a href="{{ route('partners.edit', $partner->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
                         <a href="{{ route('partners.show', $partner->id) }}" class="btn btn-success"><i class="fas fa-eye"></i></a>
