@@ -38,7 +38,7 @@ class PartnerController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $data = uploadFile('imglink', 'img/partners/', $data, $request);
+        $data = uploadFile('imglink', 'img/partners', $data, $request);
         Partner::create($data);
         return redirect()->route('partners.index')->with('success', true);
     }
@@ -77,7 +77,10 @@ class PartnerController extends Controller
     {
         $data = $request->all();
         $data = uploadFile('imglink', 'img/partners', $data, $request);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 510a73b7625bb596b211eb3a0f0609b48a3af4e0
         $partner->update($data);
         return redirect()->route('partners.index')->with('success', true);
     }

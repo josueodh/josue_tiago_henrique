@@ -16,6 +16,7 @@ class CreateTeamsTable extends Migration
         Schema::create('teams', function (Blueprint $table) {
             $table->id();
             $table->integer('semester');
+            $table->string('name');
             $table->year('year');
             $table->timestamps();
         });
