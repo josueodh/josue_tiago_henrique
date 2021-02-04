@@ -59,4 +59,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Team');
     }
+
+    public function course()
+    {
+        return $this->belongsTo('App\Course');
+    }
 }

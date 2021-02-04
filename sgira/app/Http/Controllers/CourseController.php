@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Course;
+use App\User;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -86,5 +87,11 @@ class CourseController extends Controller
     {
         $course->delete();
         return redirect()->route('courses.index')->with('success', true);
+    }
+
+    public function dashboard(Course $course)
+    {
+        $students = User::where('status', 1)->where('is_admin', 0)->where('course_id', $course->id)->get();
+        return view('courses.dashboard', compact('course', 'students'));
     }
 }

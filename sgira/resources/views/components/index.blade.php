@@ -3,9 +3,11 @@
 
       <h3 class="float-left m-0 table-title">{{ $title ?? null }}</h3>
       <div class="float-right mr-2">
+          @if(isset($create))
           <a href="{{ $create ?? null }}">
               <button type="button" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Adicionar</button>
           </a>
+          @endif
       </div>
     </div>
     <div class="card-body table-responsive">

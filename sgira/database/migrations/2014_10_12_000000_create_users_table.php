@@ -20,8 +20,10 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('registration')->default('654321');
+            $table->unsignedBigInteger('course_id')->nullable();
             $table->date('born_date')->nullable();
             $table->integer('is_admin');
+            $table->boolean('status')->default('0');
             $table->rememberToken();
             $table->timestamps();
         });

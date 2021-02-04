@@ -17,6 +17,7 @@
                     <td>{{ $course->name }}</td>
                     <td>{{ $course->duration }}</td>
                     <td class="button-index">
+                        <a href="{{ route('courses.dashboard', $course->id) }}" class="btn btn-success"><i class="fas fa-chart-line"></i></a>
                         <a href="{{ route('courses.edit', $course->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
                         <form class="form-delete" action="{{ route('courses.destroy', $course->id) }}" method="post">
                             @csrf

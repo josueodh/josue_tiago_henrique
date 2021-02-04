@@ -26,7 +26,7 @@
             </div>
         @enderror
     </div>
-    <div class="col-12 form-group">
+    <div class="col-md-6 col-sm-12 form-group">
         <label for="born_date" class="required">Data de Nascimento</label>
         <input type="date" class="form-control " required value="{{ old('born_date', $student->born_date ) }}" name="born_date"  id="born_date">
         @error('born_date')
@@ -36,8 +36,21 @@
         @enderror
     </div>
     <div class="col-md-6 col-sm-12 form-group">
+        <label for="course_id" class="required">Curso</label>
+        <select name="course_id" required value="{{ old('course_id',$student->course_id) }}" class="form-control select2 @error('course_id') is-invalid @enderror" id="course_id">
+            @foreach($courses as $course)
+                <option value="{{ $course->id }}">{{ $course->name }}</option>
+            @endforeach
+        </select>
+        @error('course_id')
+            <div class="invalid-feedback">
+                <strong>{{ $message }}</strong>
+            </div>
+        @enderror
+    </div>
+    <div class="col-md-6 col-sm-12 form-group">
         <label for="confirm_password" class="required">Senha</label>
-        <input type="password" class="form-control " required value="{{ old('confirm_password', $student->confirm_password ) }}" name="confirm_password"  id="confirm_password">
+        <input type="password" class="form-control " required name="password"  id="password">
         @error('confirm_password')
             <div class="invalid-feedback">
                 <strong>{{ $message }}</strong>
@@ -46,7 +59,7 @@
     </div>
     <div class="col-md-6 col-sm-12 form-group">
         <label for="password" class="required">Confirme sua senha</label>
-        <input type="password" class="form-control " required value="{{ old('password', $student->password ) }}" name="password"  id="password">
+        <input type="password" class="form-control " required  name="confirm_password"  id="confirm_password">
         @error('password')
             <div class="invalid-feedback">
                 <strong>{{ $message }}</strong>

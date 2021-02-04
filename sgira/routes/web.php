@@ -24,10 +24,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/grafico', function () {
         return view('charts.approval');
     });
-    Route::get('/comunicado', function () {
-        return view('warnings.classEmail');
-    });
-
+    Route::get('/dashboard/{course}', 'CourseController@dashboard')->name('courses.dashboard');
+    Route::get('/comunicado', 'TeacherController@communicate')->name('teachers.communicate');
+    Route::post('/comunicado', 'TeacherController@sendCommunicate')->name('teachers.sendCommunicate');
     Route::resource('/cursos', 'CourseController')->names('courses')->parameters(['cursos' => 'course']);
     Route::resource('/materias', 'SubjectController')->names('subjects')->parameters(['materias' => 'subject']);
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Course;
 use Illuminate\Http\Request;
 use App\User;
 
@@ -26,7 +27,8 @@ class StudentController extends Controller
     public function create()
     {
         $student = new User();
-        return view('students.create', compact('student'));
+        $courses = Course::all();
+        return view('students.create', compact('student', 'courses'));
     }
 
     /**
@@ -49,7 +51,8 @@ class StudentController extends Controller
      */
     public function show(User $student)
     {
-        return view('students.show', compact('student'));
+        $courses = Course::all();
+        return view('students.show', compact('student', 'courses'));
     }
 
     /**
@@ -60,7 +63,8 @@ class StudentController extends Controller
      */
     public function edit(User $student)
     {
-        return view('students.edit', compact('student'));
+        $courses = Course::all();
+        return view('students.edit', compact('student', 'courses'));
     }
 
     /**

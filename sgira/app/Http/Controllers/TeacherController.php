@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Communication;
+use App\Team;
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Mail;
 
 class TeacherController extends Controller
 {
@@ -86,5 +89,22 @@ class TeacherController extends Controller
     {
         $teacher->delete();
         return redirect()->route('teachers.index')->with('success', true);
+    }
+
+    public function communicate()
+    {
+        $teams = Team::where('teacher_id', request()->user()->id)->get();
+        return view('teachers.communicate', compact('teams'));
+    }
+
+
+    public function sendCommunicate(Request $request)
+    {
+        $team = Team::firstWhere('id', $request->to);
+        $data = $request->all();
+        foreach ($team->students as $student) {
+            Mail::to('josuedelgadoheringer98@gmail.com')->send(new Communication(request()->user(), $data));
+        }
+        dd($request->all());
     }
 }

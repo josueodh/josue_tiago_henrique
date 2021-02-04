@@ -20,6 +20,10 @@ class CreateCoursesTable extends Migration
             $table->string('duration');
             $table->timestamps();
         });
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+        });
     }
 
     /**
