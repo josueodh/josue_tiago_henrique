@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Nunito");
 
-
 // Bootstrap
 @import "~bootstrap/scss/bootstrap";
 
@@ -12,7 +11,6 @@
 
 // DataTable
 @import "~datatables.net-bs4/css/dataTables.bootstrap4.min.css";
-
 
 //Select2
 @import "~select2/dist/css/select2.css";
@@ -26,16 +24,20 @@
 //Summernote
 @import "~summernote/dist/summernote.min.css";
 
-.button-index{
+.button-index {
     white-space: nowrap;
 }
-.button-index > *{
+.button-index > * {
     display: inline-block;
 }
-.select2{
+.select2 {
     width: 100% !important;
 }
-.chart-container{
+.chart-container {
     position: relative;
     height: 60vh;
+}
+.chart-container-30 {
+    position: relative;
+    height: 30vh;
 }

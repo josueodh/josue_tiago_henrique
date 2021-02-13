@@ -50176,3 +50176,8 @@ a.text-muted:hover {
   height: 60vh;
 }
 
+.chart-container-30 {
+  position: relative;
+  height: 30vh;
+}
+
