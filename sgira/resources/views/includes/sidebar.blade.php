@@ -90,6 +90,14 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{ route('iraGoal.index') }}" class="nav-link {{ Route::is('iraGoal.*') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-tasks"></i>
+              <p>
+                Planejamento
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

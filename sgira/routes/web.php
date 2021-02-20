@@ -39,6 +39,12 @@ Route::middleware('auth')->group(function () {
     Route::resource('/parceiros', 'PartnerController')->names('partners')->parameters(['parceiros' => 'partner']);;
 
 
+    Route::prefix('metaIra')->group(function () {
+        Route::get('/', 'IraGoalController@index')->name('iraGoal.index');
+        Route::get('/edit', 'IraGoalController@edit')->name('iraGoal.edit');
+        Route::put('/update', 'IraGoalController@update')->name('iraGoal.update');
+    });
+
     Route::prefix('notificacoes')->group(function () {
         Route::get('/', 'NotificationController@index')->name('notifications.index');
         Route::get('/{category}', 'NotificationController@show')->name('notifications.show');
