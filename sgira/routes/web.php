@@ -34,7 +34,9 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('/professores', 'TeacherController')->names('teachers')->parameters(['professores' => 'teacher']);
 
+    Route::get('/turmas/enroll/{team}', 'TeamController@enroll')->name('teams.enroll');
     Route::resource('/turmas', 'TeamController')->names('teams')->parameters(['turmas' => 'team']);
+
 
     Route::resource('/parceiros', 'PartnerController')->names('partners')->parameters(['parceiros' => 'partner']);;
 

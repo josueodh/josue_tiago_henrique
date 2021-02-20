@@ -26,6 +26,9 @@
                             @method('delete')
                             <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
                         </form>
+                        @if(Auth::user()->is_admin == 0)
+                            <a href="{{ route('teams.enroll', $team->id) }}" class="btn btn-success"><i class="fas fa-file-signature"></i></a>
+                        @endif
                     </td>
                 </tr>
             @endforeach

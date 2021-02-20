@@ -6,6 +6,7 @@ use App\Subject;
 use App\Team;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TeamController extends Controller
 {
@@ -99,6 +100,18 @@ class TeamController extends Controller
     {
         $team->students()->detach();
         $team->delete();
+        return redirect()->route('teams.index')->with('success', true);
+    }
+
+    /**
+     * Enroll the current user, who must be of type student, in the team
+     *
+     * @param  \App\Team  $team
+     * @return \Illuminate\Http\Response
+     */
+    public function enroll(Team $team)
+    {
+        $team->students()->attach(request()->user()->id);
         return redirect()->route('teams.index')->with('success', true);
     }
 }
