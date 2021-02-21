@@ -36,7 +36,10 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('/turmas', 'TeamController')->names('teams')->parameters(['turmas' => 'team']);
 
-    Route::resource('/parceiros', 'PartnerController')->names('partners')->parameters(['parceiros' => 'partner']);;
+    Route::resource('/parceiros', 'PartnerController')->names('partners')->parameters(['parceiros' => 'partner']);
+
+    Route::resource('/bonificacoes', 'BonificationController')->names('bonifications')->parameters(['bonificacoes' => 'bonification']);
+
 
 
     Route::prefix('metaIra')->group(function () {

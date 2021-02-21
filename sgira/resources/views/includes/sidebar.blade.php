@@ -83,7 +83,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('teachers.communicate') }}" class="nav-link {{ Route::is('partners.*') ? 'active' : '' }}">
+            <a href="{{ route('teachers.communicate') }}" class="nav-link {{ Route::is('teachers.communicate') ? 'active' : '' }}">
                 <i class="nav-icon far fa-envelope"></i>
               <p>
                 Comunicado
@@ -95,6 +95,14 @@
                 <i class="nav-icon fas fa-tasks"></i>
               <p>
                 Planejamento
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('bonifications.index') }}" class="nav-link {{ Route::is('bonifications.*') ? 'active' : '' }}">
+            <i class="nav-icon fas fa-money-bill-wave"></i>
+              <p>
+                Bonificações
               </p>
             </a>
           </li>
