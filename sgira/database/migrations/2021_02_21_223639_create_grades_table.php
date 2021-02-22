@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBonificationsTable extends Migration
+class CreateGradesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,14 @@ class CreateBonificationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('bonifications', function (Blueprint $table) {
+        Schema::create('grades', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('student_id');
-            $table->unsignedBigInteger('partner_id');
-            $table->string('description');
-            $table->date('expirationDate');
-            $table->string('imglink')->nullable();
-            $table->foreign('student_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('partner_id')->references('id')->on('partners')->onDelete('cascade');
             $table->timestamps();
+            $table->unsignedBigInteger('student_id');
+            $table->unsignedBigInteger('subject_id');
+            $table->integer('grade');
+            $table->foreign('student_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('cascade');
         });
     }
 
@@ -33,6 +31,6 @@ class CreateBonificationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bonifications');
+        Schema::dropIfExists('grades');
     }
 }

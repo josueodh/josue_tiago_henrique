@@ -40,4 +40,20 @@
         <label for="description" class="required">Descrição </label>
         <input type="text" required class="form-control" name="description" id="description" value="{{ old('description', $bonification->description) }}">
     </div>
+    
+    @if(Route::currentRouteName() !='bonifications.show')
+    <div class="form-group col-12">
+        <label for="img_1" class="required">Imagem do Parceiro</label>
+        <div class="mb-2">
+            <input type="file" name="imglink" id="imglink" accept="image/*" lang="pt-br" value="{{ old('imglink', $bonification->imglink) }}">
+        </div>
+    </div>
+    @endif
+    @if(Route::currentRouteName() == 'bonifications.edit' || Route::currentRouteName() == 'bonifications.show')
+    <div class="form-group col-12">
+            <div class="d-flex justify-content-center">
+                <img loading="lazy" class="img-responsive" width="200" height="200" src="{{ asset('/storage/'.$bonification->imglink) }}" alt="Imagem da bonificação" />
+            </div>
+        </div>
+    @endif
 </div>

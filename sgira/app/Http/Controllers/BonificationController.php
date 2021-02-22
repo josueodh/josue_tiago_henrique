@@ -41,17 +41,19 @@ class BonificationController extends Controller
      */
     public function store(Request $request)
     {
-        Bonification::create($request->all());
+        $data = $request->all();
+        $data = uploadFile('imglink', 'img/bonifications', $data, $request);
+        Bonification::create($data);
         return redirect()->route('bonifications.index')->with('success', true);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Bonification   $bonification
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Bonification $bonification)
     {
         $partners = Partner::all();
         $students = User::where('is_admin', 0)->get();
@@ -61,7 +63,7 @@ class BonificationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Bonification   $bonification
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -75,19 +77,22 @@ class BonificationController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Bonification   $bonification
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Bonification $bonification)
     {
-        $bonification->update($request->all());
+        
+        $data = $request->all();
+        $data = uploadFile('imglink', 'img/bonifications', $data, $request);
+        $bonification->update($data);
         return redirect()->route('bonifications.index')->with('success', true);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Bonification   $bonification
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

@@ -39,6 +39,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('/parceiros', 'PartnerController')->names('partners')->parameters(['parceiros' => 'partner']);
 
     Route::resource('/bonificacoes', 'BonificationController')->names('bonifications')->parameters(['bonificacoes' => 'bonification']);
+ 
+    Route::resource('/notas', 'GradeController')->names('grades')->parameters(['notas' => 'grade']);
 
 
 
