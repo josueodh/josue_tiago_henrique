@@ -70,4 +70,16 @@
         </div>
     @enderror
     </div>
+    <div class="form-group col-md-6 col-sm-12">
+        <label for="status" class="required">Status </label>
+        <select name="status" class="form-control select2" id="status"  required>
+            <option value="0">Inativo</option>
+            <option value="1">Ativo</option>
+        </select>
+        @error('status')
+        <div class="invalid-feedback">
+            <strong>{{ $message }}</strong>
+        </div>
+    @enderror
+    </div>
 </div>
