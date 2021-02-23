@@ -11,6 +11,7 @@ class NotificationController extends Controller
         $notifications = request()->user()->notifications;
         return view('notifications.index', compact('notifications'));
     }
+
     public function show(string $category)
     {
         $category = ucfirst($category);

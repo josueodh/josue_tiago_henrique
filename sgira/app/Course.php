@@ -23,4 +23,18 @@ class Course extends Model
     {
         return $this->students->where('status', 1)->count();
     }
+
+    public function getAverageIraAttribute()
+    {
+        $students = $this->students;
+        $total = $students->filter(function ($student) {
+            return $student->ira != null;
+        })->count();
+
+        if ($total > 0) {
+            return $students->sum('ira') / $total;
+        }
+
+        return;
+    }
 }

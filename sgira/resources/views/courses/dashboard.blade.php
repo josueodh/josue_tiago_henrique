@@ -13,7 +13,7 @@
     <div class="col-md-4 col-sm-12">
         @component('components.smallBox')
             @slot('color', 'warning')
-            @slot('value', 80)
+            @slot('value', $course->average_ira)
             @slot('title', 'IRA')
             @slot('icon', 'far fa-file')
         @endcomponent
