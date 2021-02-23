@@ -19,6 +19,7 @@ class CreateBonificationsTable extends Migration
             $table->unsignedBigInteger('partner_id');
             $table->string('description');
             $table->date('expirationDate');
+            $table->string('type')->default('final');
             $table->string('imglink')->nullable();
             $table->foreign('student_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('partner_id')->references('id')->on('partners')->onDelete('cascade');

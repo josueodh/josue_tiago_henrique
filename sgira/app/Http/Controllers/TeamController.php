@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Subject;
 use App\Team;
 use App\User;
+use App\Bonification;
+Use App\Partner;
 use Illuminate\Http\Request;
 
 class TeamController extends Controller
@@ -28,10 +30,11 @@ class TeamController extends Controller
     public function create()
     {
         $team = new Team();
+        $partners = Partner::all();
         $subjects = Subject::all();
         $students = User::where('is_admin', 0)->get();
         $teachers = User::where('is_admin', 1)->get();
-        return view('teams.create', compact('team', 'students', 'teachers', 'subjects'));
+        return view('teams.create', compact('team', 'students', 'teachers', 'subjects','partners'));
     }
 
     /**
@@ -58,7 +61,8 @@ class TeamController extends Controller
         $students = User::where('is_admin', 0)->get();
         $teachers = User::where('is_admin', 1)->get();
         $subjects = Subject::all();
-        return view('teams.show', compact('team', 'students', 'teachers', 'subjects'));
+        $partners = Partner::all();
+        return view('teams.show', compact('team', 'students', 'teachers', 'subjects','partners'));
     }
 
     /**
@@ -72,7 +76,8 @@ class TeamController extends Controller
         $students = User::where('is_admin', 0)->get();
         $teachers = User::where('is_admin', 1)->get();
         $subjects = Subject::all();
-        return view('teams.edit', compact('team', 'students', 'teachers', 'subjects'));
+        $partners = Partner::all();
+        return view('teams.edit', compact('team', 'students', 'teachers', 'subjects','partners'));
     }
 
     /**
@@ -99,6 +104,28 @@ class TeamController extends Controller
     {
         $team->students()->detach();
         $team->delete();
+        return redirect()->route('teams.index')->with('success', true);
+    }
+
+    public function bonificating(Team $team)
+    {
+        if($team->bonus == 1 && $team->status == 1 ){
+            foreach($team->students as $student)
+            {
+                if($student->grades->grade >= $team->rule)
+                {
+                    Bonification::create([
+                        'student_id'=> $student->id,
+                        'type'=>'materia',
+                        'description'=>'Aluno teve media maior do que o criterio',
+                        'expirationDate'=> date('Y-m-d',strtotime('+ 30 days',date('Y-m-d'))),
+                        'partner_id'=>$team->partner_id,
+                    ]);
+                }
+            }
+        }
+        $team->status= !$team->status;
+        $team->save();
         return redirect()->route('teams.index')->with('success', true);
     }
 }

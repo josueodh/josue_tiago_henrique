@@ -108,7 +108,7 @@
         @enderror
     </div>
     <div class="col-sm-12 form-group">
-        <label for="value" class="required"   id="valuetext">Valor da Bonificação</label>
+        <label for="value" class="required" id="valuetext">Valor da Bonificação</label>
         <div class="input-group mb-3">
             <input type="number"  class="form-control  @error('value') is-invalid @enderror" required value="{{ old('value', $team->value ) }}" name="value"  id="value">
         </div>
@@ -129,6 +129,21 @@
             </div>
         @enderror
     </div>
+    <div class="form-group col-12">
+        <label for="partner_id" id="partnertext" class="required">Parceiros</label>
+        <span id="partner">
+            <select name="partner_id" class="form-control select2 @error('partner_id') is-invalid @enderror " id="partner_id" required value="{{ json_encode(old('partner_id',$team->partner_id)) }}">
+                @foreach ($partners as $partner)
+                    <option hidden value="{{ $partner->id }}">{{ $partner->name }}</option>
+                @endforeach
+            </select>
+        </span>
+        @error('partner_id')
+            <div class="invalid-feedback">
+                <strong>{{ $message }}</strong>
+            </div>
+        @enderror
+    </div>
 </div>
 
 @push('scripts')
@@ -140,6 +155,9 @@
             $("#value").hide();
             $("#valuetext").hide();
             $("#ruletext").hide();
+            $("#partner").hide();
+            $("#partnertext").hide();
+
         }
         if(event.value == 1)
         {
@@ -147,6 +165,9 @@
             $("#value").show();
             $("#valuetext").show();
             $("#ruletext").show();
+            $("#partner").show();
+            $("#partnertext").show();
+
         }
     }
     </script>

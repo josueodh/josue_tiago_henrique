@@ -33,6 +33,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('/alunos', 'StudentController')->names('students')->parameters(['alunos' => 'student']);
 
     Route::resource('/professores', 'TeacherController')->names('teachers')->parameters(['professores' => 'teacher']);
+    Route::post('/teste/{team}', 'TeamController@bonificating')->name('teams.close');
 
     Route::resource('/turmas', 'TeamController')->names('teams')->parameters(['turmas' => 'team']);
 
@@ -44,7 +45,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/notas/{team}/index', 'GradeController@index')->name('grades.index');
     Route::get('/notas/{team}/create', 'GradeController@create')->name('grades.create');
     Route::get('/notas/{team}/{grade}/edit', 'GradeController@edit')->name('grades.edit');
-
 
     Route::prefix('metaIra')->group(function () {
         Route::get('/', 'IraGoalController@index')->name('iraGoal.index');
