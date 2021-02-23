@@ -7,6 +7,8 @@ use App\Grade;
 use App\Subject;
 use App\Team;
 use App\User;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\NewGrade;
 
 class GradeController extends Controller
 {
@@ -43,7 +45,9 @@ class GradeController extends Controller
      */
     public function store(Request $request)
     {
+
         $grade = Grade::create($request->all());
+        Notification::send(User::where('id',$grade->student_id)->get(), new NewGrade('Nota', route('grades.show', $grade->id), 'fas fa-hand-holding-usd', 'Sua nota em '.$grade->team_id.' foi cadastrada'));
         return redirect()->route('grades.index',$grade->team_id)->with('success', true);
     }
 
