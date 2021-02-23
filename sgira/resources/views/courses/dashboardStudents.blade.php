@@ -1,7 +1,14 @@
 @extends('layouts.master')
 
-@section('title', 'Dashboard - ' . Auth::user()->name)
 @section('content')
+<div class="row">
+    <div class="col-8">
+        <h2>Dashboard - {{ Auth::user()->name }}</h2>
+    </div>
+    <div class="col-4">
+        <a class="btn btn-dark float-right" href="{{ route('iraGoal.edit') }}">Editar Meta</a>
+    </div>
+</div>
     <div class="row">
         <div class="col-md-3 col-sm-12">
             @component('components.smallBox')

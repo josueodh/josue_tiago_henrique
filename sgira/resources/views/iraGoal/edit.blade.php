@@ -4,7 +4,7 @@
 
     @component('components.edit')
         @slot('title', 'Editar Meta de IRA')
-        @slot('back', route('iraGoal.index'))
+        @slot('back', route('courses.dashboardStudent'))
         @slot('update', route('iraGoal.update'))
         @slot('form')
             @include('iraGoal.form')

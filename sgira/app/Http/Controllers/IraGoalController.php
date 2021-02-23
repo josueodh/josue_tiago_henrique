@@ -38,6 +38,6 @@ class IraGoalController extends Controller
 
         $user->save();
 
-        return redirect()->route('iraGoal.index')->with('success', true);
+        return redirect()->route('courses.dashboardStudent')->with('success', true);
     }
 }

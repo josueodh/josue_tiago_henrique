@@ -35,7 +35,7 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item">
-                <a href="{{ route('courses.dashboardStudent')}}" class="nav-link {{ Route::is('bonifications.*') ? 'active' : '' }}">
+                <a href="{{ route('courses.dashboardStudent')}}" class="nav-link {{ Route::is('courses.dashboardStudent') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-chart-bar"></i>
                   <p>
                     Dashboard
@@ -67,7 +67,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('courses.index') }}" class="nav-link {{ Route::is('courses.*') ? 'active' : '' }}">
+            <a href="{{ route('courses.index') }}" class="nav-link {{ Route::is('courses.index') ? 'active' : '' }}">
             <i class="nav-icon fas fa-university"></i>
               <p>
                 Cursos
