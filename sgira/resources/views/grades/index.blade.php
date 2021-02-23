@@ -3,7 +3,6 @@
 @section('content')
     @component('components.index')
         @slot('title','Notas')
-        @slot('create', route('grades.create'))
         @slot('header')
         <tr>
             <th>Nome do Aluno</th>

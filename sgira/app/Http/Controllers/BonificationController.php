@@ -66,7 +66,7 @@ class BonificationController extends Controller
      * @param  \App\Bonification   $bonification
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Bonification $bonification)
     {
         $partners = Partner::all();
         $students = User::where('is_admin', 0)->get();
@@ -95,7 +95,7 @@ class BonificationController extends Controller
      * @param  \App\Bonification   $bonification
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Bonification $bonification)
     {
         $bonification->delete();
         return redirect()->route('bonifications.index')->with('success', true);
