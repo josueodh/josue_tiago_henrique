@@ -19,7 +19,7 @@
           </a>
         </div>
         <div class="info">
-          <a href="#" class="d-block">Admin</a>
+          <a href="#" class="d-block">{{ Auth::user()->name }}</a>
         </div>
         <div class="info align-self-center">
           <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

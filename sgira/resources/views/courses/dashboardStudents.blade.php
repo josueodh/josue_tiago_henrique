@@ -6,7 +6,7 @@
         <div class="col-md-3 col-sm-12">
             @component('components.smallBox')
                 @slot('color', 'success')
-                @slot('value', '95.8')
+                @slot('value', Auth::user()->ira)
                 @slot('title', 'IRA')
                 @slot('icon', 'fas fa-graduation-cap')
             @endcomponent
@@ -23,7 +23,7 @@
             @component('components.smallBox')
                 @slot('color', 'warning')
                 @slot('value', '2')
-                @slot('title', 'Bonificações ganhas')
+                @slot('title', Auth::user()->bonifications->count())
                 @slot('icon', 'fas fa-gift')
             @endcomponent
         </div>
