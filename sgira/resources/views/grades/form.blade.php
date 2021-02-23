@@ -27,7 +27,9 @@
         <select name="subject_id"  required value="{{ old('subject_id',$grade->subject_id ) }}" class="form-control select2 @error('subject_id') is-invalid @enderror" id="subject_id">
             <option></option>
             @foreach($subjects as $subject)
-                <option value="{{ $subject->id }}">{{ $subject->name }}</option>
+                @if($subject->id == $subjectselected->id)
+                    <option value="{{ $subject->id}}">{{ $subject->name }}</option>
+                @endif
             @endforeach
         </select>
         @error('subject_id')

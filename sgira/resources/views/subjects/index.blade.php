@@ -19,7 +19,8 @@
                     <td>{{ $subject->code }}</td>
                     <td>{{ $subject->credits_hours }}</td>
                     <td class="button-index">
-                        <a href="{{ route('subjects.edit', $subject->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                    <a href="{{ route('subjects.edit', $subject->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                    <a href="{{ route('grades.create', $subject->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
                         <form class="form-delete" action="{{ route('subjects.destroy', $subject->id) }}" method="post">
                             @csrf
                             @method('delete')

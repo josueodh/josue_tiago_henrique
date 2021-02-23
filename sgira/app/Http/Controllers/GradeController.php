@@ -27,12 +27,13 @@ class GradeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Subject $subject)
     {
         $grade = new Grade();
         $subjects = Subject::all();
+        $subjectselected = $subject;
         $students = User::where('is_admin', 0)->get();
-        return view('grades.create', compact('grade', 'students','subjects'));
+        return view('grades.create', compact('grade', 'students','subjects','subjectselected'));
     }
 
     /**
