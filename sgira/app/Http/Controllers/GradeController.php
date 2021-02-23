@@ -18,7 +18,7 @@ class GradeController extends Controller
     public function index(Team $team)
     {
         $grades = Grade::where('team_id', $team->id)->get();
-        return view('grades.index', compact('grades'));
+        return view('grades.index', compact('grades','team'));
     }
 
     /**

@@ -3,6 +3,7 @@
 @section('content')
     @component('components.index')
         @slot('title','Notas')
+        @slot('create', route('grades.create', $team->id))
         @slot('header')
         <tr>
             <th>Nome do Aluno</th>

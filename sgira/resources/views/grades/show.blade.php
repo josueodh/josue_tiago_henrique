@@ -2,7 +2,7 @@
 @section('content')
     @component('components.show')
         @slot('title', 'Detalhes da Nota')
-        @slot('back', route('grades.index'))
+        @slot('back', route('grades.index',$team->id))
         @slot('form')
             @include('grades.form')
         @endslot
