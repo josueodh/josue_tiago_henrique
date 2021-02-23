@@ -14,25 +14,25 @@
         <div class="col-md-3 col-sm-12">
             @component('components.smallBox')
                 @slot('color', 'info')
-                @slot('value', '73')
+                @slot('value', Auth::user()->course->average_ira)
                 @slot('title', 'IRA do Curso')
                 @slot('icon', 'fas fa-calculator')
             @endcomponent
         </div>
         <div class="col-md-3 col-sm-12">
             @component('components.smallBox')
-                @slot('color', 'warning')
-                @slot('value', '2')
-                @slot('title', Auth::user()->bonifications->count())
-                @slot('icon', 'fas fa-gift')
+                @slot('color', 'danger')
+                @slot('value', Auth::user()->iraGoal)
+                @slot('title', 'Meta IRA')
+                @slot('icon', 'fas fa-chart-line')
             @endcomponent
         </div>
         <div class="col-md-3 col-sm-12">
             @component('components.smallBox')
-                @slot('color', 'danger')
-                @slot('value', '2')
-                @slot('title', 'Bonificações perdidas')
-                @slot('icon', 'far fa-frown')
+                @slot('color', 'warning')
+                @slot('value', Auth::user()->bonifications()->count())
+                @slot('title', 'Bonificações ganhas')
+                @slot('icon', 'fas fa-gift')
             @endcomponent
         </div>
     </div>

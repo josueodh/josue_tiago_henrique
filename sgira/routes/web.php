@@ -17,6 +17,7 @@ Auth::routes();
 
 Route::middleware('auth')->group(function () {
 
+    Route::get('/dashboard/aluno', 'CourseController@dashboardStudent')->name('courses.dashboardStudent');
     Route::get('/', function () {
         return view('layouts.master');
     })->name('home');
@@ -40,14 +41,13 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('/bonificacoes', 'BonificationController')->names('bonifications')->parameters(['bonificacoes' => 'bonification']);
 
-    Route::resource('/notas', 'GradeController')->names('grades')->parameters(['notas' => 'grade'])->only('store', 'update','destroy','show');
+    Route::resource('/notas', 'GradeController')->names('grades')->parameters(['notas' => 'grade'])->only('store', 'update', 'destroy', 'show');
     Route::get('/notas/{team}/index', 'GradeController@index')->name('grades.index');
     Route::get('/notas/{team}/create', 'GradeController@create')->name('grades.create');
     Route::get('/notas/{team}/{grade}/edit', 'GradeController@edit')->name('grades.edit');
 
 
     Route::prefix('metaIra')->group(function () {
-        Route::get('/', 'IraGoalController@index')->name('iraGoal.index');
         Route::get('/edit', 'IraGoalController@edit')->name('iraGoal.edit');
         Route::put('/update', 'IraGoalController@update')->name('iraGoal.update');
     });
@@ -57,5 +57,4 @@ Route::middleware('auth')->group(function () {
         Route::get('/{category}', 'NotificationController@show')->name('notifications.show');
         Route::get('/leitura/{notify}', 'NotificationController@read')->name('notifications.read');
     });
-    Route::get('/dashboard/aluno/{student}', 'CourseController@dashboardStudent')->name('courses.dashboardStudent');
 });

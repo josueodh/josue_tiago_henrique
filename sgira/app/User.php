@@ -15,8 +15,8 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password', 'is_admin', 'registration', 'iraGoal'
+    protected $guarded = [
+        'id', 'created_at', 'updated_at'
     ];
 
     /**
@@ -72,7 +72,7 @@ class User extends Authenticatable
 
     public function bonifications()
     {
-        return $this->hasMany('App\Bonification');
+        return $this->hasMany('App\Bonification', 'student_id');
     }
 
     public function getIraAttribute()
@@ -88,7 +88,7 @@ class User extends Authenticatable
                 return [0, 0];
             }
         });
-        if ($grades->sum('1') >= 0) {
+        if ($grades->sum('1') > 0) {
             return  $grades->sum('0') / $grades->sum('1');
         }
 

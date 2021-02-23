@@ -34,7 +34,15 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <li class="nav-item">
+            <li class="nav-item">
+                <a href="{{ route('courses.dashboardStudent')}}" class="nav-link {{ Route::is('bonifications.*') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-chart-bar"></i>
+                  <p>
+                    Dashboard
+                  </p>
+                </a>
+            </li>
+            <li class="nav-item">
             <a href="{{ route('students.index') }}" class="nav-link {{ Route::is('students.*') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-user-graduate"></i>
                 <p>
@@ -75,45 +83,30 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('partners.index') }}" class="nav-link {{ Route::is('partners.*') ? 'active' : '' }}">
-            <i class="nav-icon fas fa-handshake"></i>
-              <p>
-                Parceiros
-              </p>
+              <a href="{{ route('partners.index') }}" class="nav-link {{ Route::is('partners.*') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-handshake"></i>
+                <p>
+                    Parceiros
+                </p>
             </a>
-          </li>
-          <li class="nav-item">
+        </li>
+        <li class="nav-item">
             <a href="{{ route('teachers.communicate') }}" class="nav-link {{ Route::is('teachers.communicate') ? 'active' : '' }}">
                 <i class="nav-icon far fa-envelope"></i>
-              <p>
-                Comunicado
-              </p>
+                <p>
+                    Comunicado
+                </p>
             </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ route('iraGoal.index') }}" class="nav-link {{ Route::is('iraGoal.*') ? 'active' : '' }}">
-                <i class="nav-icon fas fa-tasks"></i>
-              <p>
-                Planejamento
-              </p>
-            </a>
-          </li>
+        </li>
           <li class="nav-item">
             <a href="{{ route('bonifications.index') }}" class="nav-link {{ Route::is('bonifications.*') ? 'active' : '' }}">
-            <i class="nav-icon fas fa-money-bill-wave"></i>
+            <i class="nav-icon fas fa-gifts"></i>
               <p>
                 Bonificações
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="{{ route('courses.dashboardStudent', Auth::user()->id) }}" class="nav-link {{ Route::is('bonifications.*') ? 'active' : '' }}">
-            <i class="nav-icon fas fa-money-bill-wave"></i>
-              <p>
-                Dashboard
-              </p>
-            </a>
-          </li>
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

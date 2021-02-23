@@ -54,7 +54,8 @@ class SubjectController extends Controller
      */
     public function show(Subject $subject)
     {
-        return view('subjects.show', compact('subject'));
+        $courses = Course::all();
+        return view('subjects.show', compact('subject','courses'));
     }
 
     /**

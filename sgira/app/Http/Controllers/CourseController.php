@@ -95,9 +95,8 @@ class CourseController extends Controller
         return view('courses.dashboard', compact('course', 'students'));
     }
 
-    public function dashboardStudent(User $student)
+    public function dashboardStudent()
     {
-
-        return view('courses.dashboardStudents', compact('student'));
+        return view('courses.dashboardStudents');
     }
 }
