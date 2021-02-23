@@ -21,6 +21,9 @@ class CreateTeamsTable extends Migration
             $table->boolean('status')->default(true);
             $table->unsignedBigInteger('teacher_id');
             $table->foreign('teacher_id')->references('id')->on('users')->onDelete('cascade');
+            $table->boolean('bonus');
+            $table->integer('value')->nullable();
+            $table->integer('rule')->nullable();
             $table->timestamps();
         });
     }
