@@ -22,4 +22,9 @@ class Team extends Model
     {
         return $this->belongsTo('App\Subject');
     }
+
+    public function grades()
+    {
+        return $this->hasMany('App\Grade');
+    }
 }

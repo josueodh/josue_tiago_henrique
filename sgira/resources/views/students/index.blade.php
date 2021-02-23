@@ -18,6 +18,7 @@
                     <td>{{ $student->registration }}</td>
                     <td class="button-index">
                         <a href="{{ route('students.edit', $student->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                        <a href="{{ route('students.show', $student->id) }}" class="btn btn-success"><i class="fas fa-eye"></i></a>
                         <form class="form-delete" action="{{ route('students.destroy', $student->id) }}" method="post">
                             @csrf
                             @method('delete')

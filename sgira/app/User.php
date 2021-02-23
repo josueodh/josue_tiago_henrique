@@ -15,8 +15,8 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password', 'is_admin', 'registration', 'iraGoal'
+    protected $guarded = [
+        'id', 'created_at', 'updated_at'
     ];
 
     /**
@@ -63,5 +63,35 @@ class User extends Authenticatable
     public function course()
     {
         return $this->belongsTo('App\Course');
+    }
+
+    public function grades()
+    {
+        return $this->hasMany('App\Grade');
+    }
+
+    public function bonifications()
+    {
+        return $this->hasMany('App\Bonification', 'student_id');
+    }
+
+    public function getIraAttribute()
+    {
+        $teams = Team::where('status', false)->whereHas('students', function ($query) {
+            return $query->where('student_id', $this->id);
+        })->get();
+        $grades = $teams->map(function ($team) {
+            $grade = $team->grades()->where('student_id', $this->id)->get();
+            if ($grade->count() > 0) {
+                return [$team->subject->credits * $grade->sum('grade') / $grade->count(), $team->subject->credits];
+            } else {
+                return [0, 0];
+            }
+        });
+        if ($grades->sum('1') > 0) {
+            return  $grades->sum('0') / $grades->sum('1');
+        }
+
+        return;
     }
 }

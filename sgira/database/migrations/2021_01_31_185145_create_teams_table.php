@@ -18,8 +18,14 @@ class CreateTeamsTable extends Migration
             $table->integer('semester');
             $table->string('name');
             $table->year('year');
+            $table->boolean('status')->default(true);
             $table->unsignedBigInteger('teacher_id');
             $table->foreign('teacher_id')->references('id')->on('users')->onDelete('cascade');
+            $table->boolean('bonus');
+            $table->integer('value')->nullable();
+            $table->integer('rule')->nullable();
+            $table->unsignedBigInteger('partner_id');
+            $table->foreign('partner_id')->references('id')->on('partners')->onDelete('cascade');
             $table->timestamps();
         });
     }

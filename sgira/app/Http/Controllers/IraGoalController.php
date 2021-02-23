@@ -8,17 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class IraGoalController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $user = Auth::user();
-        $iraGoal = $user->iraGoal;
-        return view('iraGoal.index', compact('iraGoal'));
-    }   
 
     /**
      * Show the form for editing the specified resource.
@@ -49,6 +38,6 @@ class IraGoalController extends Controller
 
         $user->save();
 
-        return redirect()->route('iraGoal.index')->with('success', true);
+        return redirect()->route('courses.dashboardStudent')->with('success', true);
     }
 }

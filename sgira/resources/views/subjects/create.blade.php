@@ -3,7 +3,7 @@
 @section('content')
 
     @component('components.create')
-        @slot('title', 'Criar Curso')
+        @slot('title', 'Criar Matéria')
         @slot('back', route('subjects.index'))
         @slot('store', route('subjects.store'))
         @slot('form')

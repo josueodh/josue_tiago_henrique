@@ -94,4 +94,9 @@ class CourseController extends Controller
         $students = User::where('status', 1)->where('is_admin', 0)->where('course_id', $course->id)->get();
         return view('courses.dashboard', compact('course', 'students'));
     }
+
+    public function dashboardStudent()
+    {
+        return view('courses.dashboardStudents');
+    }
 }

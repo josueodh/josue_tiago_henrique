@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class PartnerSeeder extends Seeder
+class BonificationSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class PartnerSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Partner::class, 2)->create();
+        factory(App\Bonification::class, 2)->create();
     }
 }

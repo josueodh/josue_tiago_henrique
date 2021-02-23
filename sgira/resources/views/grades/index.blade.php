@@ -2,26 +2,24 @@
 
 @section('content')
     @component('components.index')
-        @slot('title','Matérias')
-        @slot('create', route('subjects.create'))
+        @slot('title','Notas')
+        @slot('create', route('grades.create', $team->id))
         @slot('header')
         <tr>
-            <th>Nome</th>
-            <th>Código</th>
-            <th>Creditos</th>
+            <th>Nome do Aluno</th>
+            <th>Nota</th>
             <th>Ações</th>
         </tr>
         @endslot
         @slot('body')
-            @foreach($subjects as $subject)
+            @foreach($grades as $grade)
                 <tr>
-                    <td>{{ $subject->name }}</td>
-                    <td>{{ $subject->code }}</td>
-                    <td>{{ $subject->credits_hours }}</td>
+                    <td>{{ $grade->student->name }}</td>
+                    <td>{{ $grade->grade}}</td>
                     <td class="button-index">
-                    <a href="{{ route('subjects.edit', $subject->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                    <a href="{{ route('subjects.show', $subject->id) }}" class="btn btn-success"><i class="fas fa-eye"></i></a>
-                        <form class="form-delete" action="{{ route('subjects.destroy', $subject->id) }}" method="post">
+                        <a href="{{ route('grades.edit', [$team->id,$grade->id]) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                        <a href="{{ route('grades.show', $grade->id) }}" class="btn btn-success"><i class="fas fa-eye"></i></a>
+                        <form class="form-delete" action="{{ route('grades.destroy', $grade->id) }}" method="post">
                             @csrf
                             @method('delete')
                             <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>

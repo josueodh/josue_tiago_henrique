@@ -19,8 +19,13 @@
                     <td>{{ $team->subject->name }}</td>
                     <td>{{ $team->teacher->name }}</td>
                     <td class="button-index">
+                        <a href="{{ route('grades.index', $team->id) }}" class="btn btn-dark"><i class="fas fa-tasks"></i></a>
                         <a href="{{ route('teams.edit', $team->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
                         <a href="{{ route('teams.show', $team->id) }}" class="btn btn-success"><i class="fas fa-eye"></i></a>
+                        <!-- <form class="form-close" action="{{ route('teams.close',$team->id)}}" method="post">
+                            @csrf
+                            <button type="submit" class="btn btn-dark"><i class="fas fa-door-closed"></i></button>
+                        </form> -->
                         <form class="form-delete" action="{{ route('teams.destroy', $team->id) }}" method="post">
                             @csrf
                             @method('delete')

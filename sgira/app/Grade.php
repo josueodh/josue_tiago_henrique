@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Partner extends Model
+class Grade extends Model
 {
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
-    public function bonifications()
+    public function student()
     {
-        return $this->hasMany('App\Bonification');
+        return $this->belongsTo('App\User');
     }
 }
