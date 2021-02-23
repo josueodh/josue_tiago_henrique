@@ -18,6 +18,7 @@ class CreateTeamsTable extends Migration
             $table->integer('semester');
             $table->string('name');
             $table->year('year');
+            $table->boolean('status')->default(true);
             $table->unsignedBigInteger('teacher_id');
             $table->foreign('teacher_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

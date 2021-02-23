@@ -6,7 +6,7 @@
         @slot('create', route('bonifications.create'))
         @slot('header')
         <tr>
-            <th>Id do Aluno</th>
+            <th>Nome do Aluno</th>
             <th>Descrição</th>
             <th>Validade</th>
             <th>Parceiro</th>
@@ -15,10 +15,10 @@
         @slot('body')
             @foreach($bonifications as $bonification)
                 <tr>
-                    <td>{{ $bonification->student_id }}</td>
+                    <td>{{ $bonification->student->name }}</td>
                     <td>{{ $bonification->description }}</td>
-                    <td>{{ $bonification->expirationDate }}</td>
-                    <td>{{ $bonification->partner_id}}</td>
+                    <td>{{ date('d/m/Y', strtotime($bonification->expirationDate)) }}</td>
+                    <td>{{ $bonification->partner->name }}</td>
                     <td class="button-index">
                         <a href="{{ route('bonifications.edit', $bonification->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
                         <a href="{{ route('bonifications.show', $bonification->id) }}" class="btn btn-success"><i class="fas fa-eye"></i></a>

@@ -40,9 +40,10 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('/bonificacoes', 'BonificationController')->names('bonifications')->parameters(['bonificacoes' => 'bonification']);
 
-    Route::resource('/notas', 'GradeController')->names('grades')->parameters(['notas' => 'grade'])->except('index', 'show');
-    Route::get('/notas/{team}', 'GradeController@index')->name('grades.index');
+    Route::resource('/notas', 'GradeController')->names('grades')->parameters(['notas' => 'grade'])->only('store', 'update','destroy','show');
+    Route::get('/notas/{team}/index', 'GradeController@index')->name('grades.index');
     Route::get('/notas/{team}/create', 'GradeController@create')->name('grades.create');
+    Route::get('/notas/{team}/{grade}/edit', 'GradeController@edit')->name('grades.edit');
 
 
     Route::prefix('metaIra')->group(function () {

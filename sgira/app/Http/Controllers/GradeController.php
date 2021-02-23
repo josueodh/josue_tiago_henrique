@@ -44,7 +44,7 @@ class GradeController extends Controller
     public function store(Request $request)
     {
         $grade = Grade::create($request->all());
-        return redirect()->route('grades.index')->with('success', true);
+        return redirect()->route('grades.index',$grade->team_id)->with('success', true);
     }
 
     /**
@@ -56,8 +56,8 @@ class GradeController extends Controller
     public function show(Grade $grade)
     {
         $students = User::where('is_admin', 0)->get();
-        $subjects = Subject::all();
-        return view('grades.show', compact('grade', 'students', 'subjects'));
+        $team = Team::where('id', $grade->team_id)->first();
+        return view('grades.show', compact('grade', 'students','team'));
     }
 
     /**
@@ -66,11 +66,11 @@ class GradeController extends Controller
      * @param  \App\Grade  $grade
      * @return \Illuminate\Http\Response
      */
-    public function edit(Grade $grade)
+    public function edit(Team $team,Grade $grade)
     {
         $students = User::where('is_admin', 0)->get();
         $subjects = Subject::all();
-        return view('grades.edit', compact('grade', 'students', 'subjects'));
+        return view('grades.edit', compact('grade', 'students', 'subjects','team'));
     }
 
     /**
@@ -83,7 +83,7 @@ class GradeController extends Controller
     public function update(Request $request, Grade $grade)
     {
         $grade->update($request->all());
-        return redirect()->route('grades.index')->with('success', true);
+        return redirect()->route('grades.index',$grade->team_id)->with('success', true);
     }
 
     /**
@@ -94,7 +94,8 @@ class GradeController extends Controller
      */
     public function destroy(Grade $grade)
     {
+        $team = $grade->team_id;
         $grade->delete();
-        return redirect()->route('grades.index')->with('success', true);
+        return redirect()->route('grades.index',$team)->with('success', true);
     }
 }

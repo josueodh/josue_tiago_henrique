@@ -69,4 +69,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Grade');
     }
+
+    public function bonifications()
+    {
+        return $this->hasMany('App\Bonification');
+    }
 }
