@@ -39,7 +39,9 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        User::create($request->all());
+        $data = $request->all();
+        $data['password'] = bcrypt($data['password']);
+        User::create($data);
         return redirect()->route('students.index')->with('success', true);
     }
 
@@ -76,7 +78,13 @@ class StudentController extends Controller
      */
     public function update(Request $request, User $student)
     {
-        $student->update($request->all());
+        $data = $request->all();
+        if ($request->password != '') {
+            $data['password'] = bcrypt($data['password']);
+        } else {
+            unset($data['password']);
+        }
+        $student->update($data);
         return redirect()->route('students.index')->with('success', true);
     }
 

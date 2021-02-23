@@ -106,7 +106,14 @@
               </p>
             </a>
           </li>
-
+          <li class="nav-item">
+            <a href="{{ route('courses.dashboardStudent', Auth::user()->id) }}" class="nav-link {{ Route::is('bonifications.*') ? 'active' : '' }}">
+            <i class="nav-icon fas fa-money-bill-wave"></i>
+              <p>
+                Dashboard
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

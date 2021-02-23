@@ -57,7 +57,5 @@ Route::middleware('auth')->group(function () {
         Route::get('/{category}', 'NotificationController@show')->name('notifications.show');
         Route::get('/leitura/{notify}', 'NotificationController@read')->name('notifications.read');
     });
-    Route::get('/teste', function () {
-        return view('courses.dashboardStudents');
-    });
+    Route::get('/dashboard/aluno/{student}', 'CourseController@dashboardStudent')->name('courses.dashboardStudent');
 });

@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Dashboard - Flávio')
+@section('title', 'Dashboard - ' . Auth::user()->name)
 @section('content')
     <div class="row">
         <div class="col-md-3 col-sm-12">
