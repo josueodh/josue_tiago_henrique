@@ -4,17 +4,18 @@
 
 use App\Grade;
 use App\Subject;
+use App\Team;
 use App\User;
 use Faker\Generator as Faker;
 
-$factory->define(Grade::class,function (Faker $faker) {
+$factory->define(Grade::class, function (Faker $faker) {
     $student = User::all()->pluck('id')->toArray();
-    $subject = Subject::all()->pluck('id')->toArray();
+    $team = Team::all()->pluck('id')->toArray();
     $random_key = array_rand($student);
-    $random_key_subject = array_rand($subject);
+    $random_key_team = array_rand($team);
     return [
         'student_id' => $student[$random_key],
-        'subject_id'=>$subject[$random_key_subject],
+        'team_id' => $team[$random_key_team],
         'grade' => $faker->randomNumber($nbDigits = NULL, $strict = false),
     ];
 });

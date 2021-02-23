@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Grade;
-Use App\Subject;
+use App\Subject;
+use App\Team;
 use App\User;
 
 class GradeController extends Controller
@@ -14,12 +15,10 @@ class GradeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Team $team)
     {
-        $grades = Grade::all();
-        $students = User::where('is_admin', 0)->get();
-        $subjects = Subject::all();
-        return view('grades.index', compact('grades','students','subjects'));
+        $grades = Grade::where('team_id', $team->id)->get();
+        return view('grades.index', compact('grades'));
     }
 
     /**
@@ -27,13 +26,13 @@ class GradeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Subject $subject)
+    public function create(Team $team)
     {
         $grade = new Grade();
-        $subjects = Subject::all();
-        $subjectselected = $subject;
-        $students = User::where('is_admin', 0)->get();
-        return view('grades.create', compact('grade', 'students','subjects','subjectselected'));
+        $students = User::where('is_admin', 0)->whereHas('teams', function ($query) use ($team) {
+            return $query->where('team_id', $team->id);
+        })->get();
+        return view('grades.create', compact('grade', 'team', 'students'));
     }
 
     /**
@@ -44,8 +43,8 @@ class GradeController extends Controller
      */
     public function store(Request $request)
     {
-       $grade = Grade::create($request->all());
-       return redirect()->route('grades.index')->with('success',true);
+        $grade = Grade::create($request->all());
+        return redirect()->route('grades.index')->with('success', true);
     }
 
     /**
@@ -58,7 +57,7 @@ class GradeController extends Controller
     {
         $students = User::where('is_admin', 0)->get();
         $subjects = Subject::all();
-        return view('grades.show', compact('grade', 'students','subjects'));
+        return view('grades.show', compact('grade', 'students', 'subjects'));
     }
 
     /**
@@ -81,7 +80,7 @@ class GradeController extends Controller
      * @param  App\Grade  $grade
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Grade $grade)
+    public function update(Request $request, Grade $grade)
     {
         $grade->update($request->all());
         return redirect()->route('grades.index')->with('success', true);
@@ -97,6 +96,5 @@ class GradeController extends Controller
     {
         $grade->delete();
         return redirect()->route('grades.index')->with('success', true);
-
     }
 }

@@ -106,14 +106,7 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="{{ route('grades.index') }}" class="nav-link {{ Route::is('grades.*') ? 'active' : '' }}">
-            <i class="nav-icon fas fa-chart-bar"></i>
-              <p>
-                Notas
-              </p>
-            </a>
-          </li>
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

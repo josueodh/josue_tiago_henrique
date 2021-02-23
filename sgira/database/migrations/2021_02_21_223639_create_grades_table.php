@@ -17,10 +17,10 @@ class CreateGradesTable extends Migration
             $table->id();
             $table->timestamps();
             $table->unsignedBigInteger('student_id');
-            $table->unsignedBigInteger('subject_id');
+            $table->unsignedBigInteger('team_id');
             $table->integer('grade');
             $table->foreign('student_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('cascade');
+            $table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade');
         });
     }
 

@@ -8,7 +8,7 @@ use App\Subject;
 use Faker\Generator as Faker;
 
 $factory->define(Team::class, function (Faker $faker) {
-    $teacher = User::where('is_admin',1)->pluck('id')->toArray();
+    $teacher = User::where('is_admin', 1)->pluck('id')->toArray();
     $random_key = array_rand($teacher);
     $subject = Subject::all()->pluck('id')->toArray();
     $random_subject = array_rand($subject);
@@ -16,8 +16,8 @@ $factory->define(Team::class, function (Faker $faker) {
         'name' => $faker->name,
         'teacher_id' => $teacher[$random_key],
         'year' => $faker->year,
-        'semester'=>rand(1,2),
-        'subject_id' =>$subject[$random_subject],
+        'semester' => rand(1, 2),
+        'subject_id' => $subject[$random_subject],
 
     ];
 });

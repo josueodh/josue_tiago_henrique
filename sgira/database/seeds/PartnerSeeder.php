@@ -11,6 +11,6 @@ class PartnerSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Partner::class, 50)->create();
+        factory(App\Partner::class, 2)->create();
     }
 }

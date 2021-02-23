@@ -39,9 +39,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('/parceiros', 'PartnerController')->names('partners')->parameters(['parceiros' => 'partner']);
 
     Route::resource('/bonificacoes', 'BonificationController')->names('bonifications')->parameters(['bonificacoes' => 'bonification']);
- 
-    Route::resource('/notas', 'GradeController')->names('grades')->parameters(['notas' => 'grade']);
 
+    Route::resource('/notas', 'GradeController')->names('grades')->parameters(['notas' => 'grade'])->except('index', 'show');
+    Route::get('/notas/{team}', 'GradeController@index')->name('grades.index');
+    Route::get('/notas/{team}/create', 'GradeController@create')->name('grades.create');
 
 
     Route::prefix('metaIra')->group(function () {
@@ -55,7 +56,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/{category}', 'NotificationController@show')->name('notifications.show');
         Route::get('/leitura/{notify}', 'NotificationController@read')->name('notifications.read');
     });
-    Route::get('/teste',function(){
+    Route::get('/teste', function () {
         return view('courses.dashboardStudents');
     });
 });

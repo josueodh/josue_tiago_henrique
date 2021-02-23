@@ -64,4 +64,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Course');
     }
+
+    public function grades()
+    {
+        return $this->hasMany('App\Grade');
+    }
 }
