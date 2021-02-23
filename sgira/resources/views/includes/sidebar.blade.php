@@ -43,7 +43,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('teachers.index') }}" class="nav-link {{ Route::is('teachers.*') ? 'active' : '' }}">
+            <a href="{{ route('teachers.index') }}" class="nav-link {{ Route::is('teachers.index') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-chalkboard-teacher"></i>
                 <p>
                 Professores

@@ -6,7 +6,7 @@
         @slot('create', route('bonifications.create'))
         @slot('header')
         <tr>
-            <th>Nome do Aluno</th>
+            <th>Id do Aluno</th>
             <th>Descrição</th>
             <th>Validade</th>
             <th>Parceiro</th>
