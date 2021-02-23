@@ -19,19 +19,6 @@
             </div>
         @enderror
     </div>
-    <div class="col-sm-12 col-md-6 form-group">
-        <label for="credits" class="required">Creditos</label>
-        <select name="credits"  required value="{{old('credits',$subject->credits ) }}" class="form-control select2 @error('credits') is-invalid @enderror multiple" id="credits">
-            <option></option>
-            <option>4</option>
-            <option>2</option>
-        </select>
-        @error('credits')
-            <div class="invalid-feedback">
-                <strong>{{ $message }}</strong>
-            </div>
-        @enderror
-    </div>
     <div class="col-sm-12 form-group">
         <label for="course_id" class="required">Curso</label>
         <select name="course_id[]" required multiple value="{{ json_encode(old('course_id',$subject->courses->pluck('id'))) }}" class="form-control select2 @error('course_id') is-invalid @enderror multiple" id="course_id">

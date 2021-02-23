@@ -18,6 +18,6 @@ $factory->define(Team::class, function (Faker $faker) {
         'year' => $faker->year,
         'semester' => rand(1, 2),
         'subject_id' => $subject[$random_subject],
-
+        'bonus'=>0,
     ];
 });

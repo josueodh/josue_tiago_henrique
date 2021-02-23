@@ -40,7 +40,7 @@
                           <div class="dropdown-divider"></div>
                       @endforeach
                       <div class="dropdown-divider"></div>
-                      <a href="{{ route('notifications.index') }}" class="dropdown-item dropdown-footer">Veja todas as Notificações</a>
+                      <a href="{{ route('notifications.index') }}" class="dropdown-intem dropdown-footer">Veja todas as Notificações</a>
                     </div>
                 </li>
             </ul>
