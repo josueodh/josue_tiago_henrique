@@ -21,5 +21,14 @@ class UserSeeder extends Seeder
             'password' => bcrypt('123456'),
             'is_admin' => 1,
         ]);
+        User::updateOrCreate([
+            'email' => 'student@student.com.br',
+            'password' => bcrypt('123456'),
+        ], [
+            'name' => 'Student',
+            'email' => 'student@student.com.br',
+            'password' => bcrypt('123456'),
+            'is_admin' => 0,
+        ]);
     }
 }
