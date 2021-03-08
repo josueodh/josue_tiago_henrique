@@ -52,11 +52,11 @@
                     </tr>
                 @endslot
                 @slot('body')
-                    @for($i = 0 ; $i < 6 ; $i++)
+                    @for($i = 0 ; $i < $orderedGoodStudents ; $i++)
                         <tr>
                             <td>{{ $i +1 }}</td>
-                            <td>{{ $canReceived[$i] }}</td>
-                            <td>{{ 100 - ($i+1)*3.3  }} </td>
+                            <td>{{ $orderedGoodStudents[$i]->name }}</td>
+                            <td>{{ $orderedGoodStudents[$i]->grade }} </td>
                         </tr>
                     @endfor
                 @endslot
@@ -73,11 +73,11 @@
                     </tr>
                 @endslot
                 @slot('body')
-                    @for($i = 0 ; $i < 2 ; $i++)
-                        <tr>
-                            <td>{{ $i + 7 }}</td>
-                            <td>{{ $canotReceived[$i] }}</td>
-                            <td>{{ 85 - ($i+1)*5.4  }} </td>
+                @for($i = 0 ; $i < $orderedBadStudents ; $i++)
+                    <tr>
+                            <td>{{ $i +1 }}</td>
+                            <td>{{ $orderedBadStudents[$i]->name }}</td>
+                            <td>{{ $orderedBadStudents[$i]->grade }} </td>
                         </tr>
                     @endfor
                 @endslot
