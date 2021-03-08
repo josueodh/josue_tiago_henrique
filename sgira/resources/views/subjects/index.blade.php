@@ -20,6 +20,7 @@
                     <td>{{ $subject->credits_hours }}</td>
                     <td class="button-index">
                     <a href="{{ route('subjects.edit', $subject->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                    <a href="{{ route('subjects.dashboard', $subject->id) }}" class="btn btn-dark"><i class="fas fa-chart-bar"></i></a>
                     <a href="{{ route('subjects.show', $subject->id) }}" class="btn btn-success"><i class="fas fa-eye"></i></a>
                         <form class="form-delete" action="{{ route('subjects.destroy', $subject->id) }}" method="post">
                             @csrf

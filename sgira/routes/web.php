@@ -22,9 +22,7 @@ Route::middleware('auth')->group(function () {
         return view('layouts.master');
     })->name('home');
     Route::get('/home', 'HomeController@index')->name('home');
-    Route::get('/grafico', function () {
-        return view('charts.approval');
-    });
+    Route::get('/materia/grafico/{subject}', 'SubjectController@dashboard')->name('subjects.dashboard');
     Route::get('/dashboard/{course}', 'CourseController@dashboard')->name('courses.dashboard');
     Route::get('/comunicado', 'TeacherController@communicate')->name('teachers.communicate');
     Route::post('/comunicado', 'TeacherController@sendCommunicate')->name('teachers.sendCommunicate');

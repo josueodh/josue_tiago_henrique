@@ -110,7 +110,7 @@
     <div class="col-sm-12 form-group">
         <label for="value" class="required" id="valuetext">Valor da Bonificação</label>
         <div class="input-group mb-3">
-            <input type="number"  class="form-control  @error('value') is-invalid @enderror" required value="{{ old('value', $team->value ) }}" name="value"  id="value">
+            <input type="number"  class="form-control  @error('value') is-invalid @enderror"  value="{{ old('value', $team->value ) }}" name="value"  id="value">
         </div>
         @error('value')
             <div class="invalid-feedback">
@@ -121,7 +121,7 @@
     <div class="col-sm-12 form-group">
         <label for="rule" class="required" id="ruletext">Regra da Bonificação</label>
         <div class="input-group mb-3">
-            <input type="number"  class="form-control  @error('rule') is-invalid @enderror" required value="{{ old('rule', $team->rule ) }}" name="rule"  id="rule">
+            <input type="number"  class="form-control  @error('rule') is-invalid @enderror"  value="{{ old('rule', $team->rule ) }}" name="rule"  id="rule">
         </div>
         @error('rule')
             <div class="invalid-feedback">
@@ -132,7 +132,7 @@
     <div class="form-group col-12">
         <label for="partner_id" id="partnertext" class="required">Parceiros</label>
         <span id="partner">
-            <select name="partner_id" class="form-control select2 @error('partner_id') is-invalid @enderror " id="partner_id" required value="{{ json_encode(old('partner_id',$team->partner_id)) }}">
+            <select name="partner_id" class="form-control select2 @error('partner_id') is-invalid @enderror " id="partner_id"  value="{{ json_encode(old('partner_id',$team->partner_id)) }}">
                 @foreach ($partners as $partner)
                     <option hidden value="{{ $partner->id }}">{{ $partner->name }}</option>
                 @endforeach
