@@ -105,6 +105,17 @@ class TeacherController extends Controller
         return view('teachers.communicate', compact('teams'));
     }
 
+    public function email(User $teacher)
+    {
+        return view('teachers.email', compact('$teacher'));
+    }
+
+    public function emailPost(Request $request)
+    {
+        $teacher = User::Find($request->teacher_id);
+        $data = $request->all();
+        Mail::to('josuedelgadoheringer98@gmail.com')->send(new Email($teacher, $data));
+    }
 
     public function sendCommunicate(Request $request)
     {
@@ -113,6 +124,5 @@ class TeacherController extends Controller
         foreach ($team->students as $student) {
             Mail::to('josuedelgadoheringer98@gmail.com')->send(new Communication(request()->user(), $data));
         }
-        dd($request->all());
     }
 }
