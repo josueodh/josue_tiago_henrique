@@ -68,6 +68,7 @@ class StudentController extends Controller
         $ira = [];
         $twoCredits = [];
         $fourCredits = [];
+
         foreach ($teams as $key => $team) {
             $grade = $team->grades()->where('student_id', $student->id)->sum('grade');
             $total = $team->grades()->where('student_id', $student->id)->count();
@@ -75,18 +76,18 @@ class StudentController extends Controller
                 array_push($label, $team->yearAndSemester);
 
                 if ($team->subject->credits == '2') {
-                    array_push($twoCredits, 1);
-                    array_push($fourCredits, 0);
                     if ($total > 0) {
+                        array_push($twoCredits, 1);
+                        array_push($fourCredits, 0);
                         array_push($parcialIra, 2 * ($grade / $total));
                     } else {
                         array_push($parcialIra, 0);
                     }
                 }
                 if ($team->subject->credits == '4') {
-                    array_push($twoCredits, 0);
-                    array_push($fourCredits, 1);
                     if ($total > 0) {
+                        array_push($twoCredits, 0);
+                        array_push($fourCredits, 1);
                         array_push($parcialIra, 4 * $grade / $total);
                     } else {
                         array_push($parcialIra, 0);
@@ -95,20 +96,19 @@ class StudentController extends Controller
             } else {
                 $index = array_search($team->yearAndSemester, $label);
                 if ($team->subject->credits == '2') {
-                    $twoCredits[$index] += 1;
                     if ($total > 0) {
+                        $twoCredits[$index] += 1;
                         $parcialIra[$index] += ($grade / $total);
                     }
                 }
                 if ($team->subject->credits == '4') {
-                    $fourCredits[$index] += 1;
                     if ($total > 0) {
+                        $fourCredits[$index] += 1;
                         $parcialIra[$index] += ($grade / $total);
                     }
                 }
             }
         }
-
         foreach ($parcialIra as $key =>  $finalIra) {
             $total_ira_grade = 0;
             $total_credits = 0;

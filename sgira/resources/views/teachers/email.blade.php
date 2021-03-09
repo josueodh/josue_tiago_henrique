@@ -10,8 +10,8 @@
                     @csrf
                     @method('post')
                     <div class="form-group">
-                        <label for="assunto">Assunto</label>
-                        <input class="form-control" name="assunto" required value="" id="assunto">
+                        <label for="subject">Assunto</label>
+                        <input class="form-control" name="subject" required value="{{ old('subject') }}" id="subject">
                     </div>
                     <div class="form-group">
                         <textarea id="compose-textarea" name="message" class="form-control" style="height: 300px">

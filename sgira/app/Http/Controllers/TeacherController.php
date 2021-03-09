@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\Communication;
+use App\Mail\Email;
 use App\Team;
 use Illuminate\Http\Request;
 use App\User;
@@ -77,7 +78,8 @@ class TeacherController extends Controller
      */
     public function update(Request $request, User $teacher)
     {
-        $data->update($request->all());
+
+        $data = $request->all();
         if ($request->password != '') {
             $data['password'] = bcrypt($data['password']);
         } else {
@@ -107,7 +109,7 @@ class TeacherController extends Controller
 
     public function email(User $teacher)
     {
-        return view('teachers.email', compact('$teacher'));
+        return view('teachers.email', compact('teacher'));
     }
 
     public function emailPost(Request $request)
@@ -115,6 +117,7 @@ class TeacherController extends Controller
         $teacher = User::Find($request->teacher_id);
         $data = $request->all();
         Mail::to('josuedelgadoheringer98@gmail.com')->send(new Email($teacher, $data));
+        return redirect()->route('teachers.index')->with('success', true);
     }
 
     public function sendCommunicate(Request $request)

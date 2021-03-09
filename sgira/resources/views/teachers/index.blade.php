@@ -19,6 +19,7 @@
                     <td>{{ $teacher->name }}</td>
                     <td>{{ $teacher->registration }}</td>
                     <td class="button-index">
+                        <a href="{{ route('teachers.email', $teacher->id) }}" class="btn btn-info"><i class="far fa-envelope"></i></a>
                         @can('update', $teacher)
                         <a href="{{ route('teachers.edit', $teacher->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
                         @endcan
@@ -30,7 +31,6 @@
                             <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
                         </form>
                         @endcan
-                        <a href="{{ route('teachers.email', $teacher->id) }}" class="btn btn-success"><i class="far fa-envelope"></i></a>
                     </td>
                 </tr>
             @endforeach
