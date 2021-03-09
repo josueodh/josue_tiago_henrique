@@ -22,6 +22,7 @@ Route::middleware('auth')->group(function () {
         return view('layouts.master');
     })->name('home');
     Route::get('/home', 'HomeController@index')->name('home');
+    route::get('/turma/ranking/{team}', 'TeamController@ranking')->name('teams.ranking');
     Route::get('/materia/grafico/{subject}', 'SubjectController@dashboard')->name('subjects.dashboard');
     Route::get('/dashboard/{course}', 'CourseController@dashboard')->name('courses.dashboard');
     Route::get('/comunicado', 'TeacherController@communicate')->name('teachers.communicate');

@@ -1,16 +1,13 @@
 @extends('layouts.master')
 
-@section('title', 'Matéria X - 2020.1')
-@php
-    $canReceived = ['Joao', 'Lara', 'Francisco', 'Lucas', 'Larissa', 'Marcos'];
-    $canotReceived = [ 'José', 'Evandro']
-@endphp
+@section('title', 'Matéria ' . $team->name . ' - ' . $team->yearAndSemester)
+
 @section('content')
     <div class="row">
         <div class="col-md-3 col-sm-12">
             @component('components.smallBox')
                 @slot('color', 'danger')
-                @slot('value', '2')
+                @slot('value', collect($team->noBonusStudents)->count())
                 @slot('title', 'Nota menor que 80')
                 @slot('icon', 'far fa-frown')
             @endcomponent
@@ -18,7 +15,7 @@
         <div class="col-md-3 col-sm-12">
             @component('components.smallBox')
                 @slot('color', 'success')
-                @slot('value', '6')
+                @slot('value', collect($team->bonusStudents)->count())
                 @slot('title', 'Nota maior que 80')
                 @slot('icon', 'fas fa-graduation-cap')
             @endcomponent
@@ -34,8 +31,8 @@
         <div class="col-md-3 col-sm-12">
             @component('components.smallBox')
                 @slot('color', 'warning')
-                @slot('value', '80')
-                @slot('title', 'Nota mínima para bonificação')
+                @slot('value', $team->value)
+                @slot('title', 'Nota bonificação')
                 @slot('icon', 'fas fa-book-reader')
             @endcomponent
         </div>
@@ -52,13 +49,13 @@
                     </tr>
                 @endslot
                 @slot('body')
-                    @for($i = 0 ; $i < $orderedGoodStudents ; $i++)
+                    @foreach($team->bonusStudents as $key => $student)
                         <tr>
-                            <td>{{ $i +1 }}</td>
-                            <td>{{ $orderedGoodStudents[$i]->name }}</td>
-                            <td>{{ $orderedGoodStudents[$i]->grade }} </td>
-                        </tr>
-                    @endfor
+                            <th>{{ $key + 1 }}</th>
+                            <th>{{ $student->name }}</th>
+                            <th>{{ $student->total_grade }}</th>
+                        </td>
+                    @endforeach
                 @endslot
             @endcomponent
         </div>
@@ -73,13 +70,14 @@
                     </tr>
                 @endslot
                 @slot('body')
-                @for($i = 0 ; $i < $orderedBadStudents ; $i++)
-                    <tr>
-                            <td>{{ $i +1 }}</td>
-                            <td>{{ $orderedBadStudents[$i]->name }}</td>
-                            <td>{{ $orderedBadStudents[$i]->grade }} </td>
-                        </tr>
-                    @endfor
+                    @foreach($team->noBonusStudents as $key => $student)
+                        <tr>
+                            <th>{{ $key + 1 + collect($team->bonusStudents)->count() }}</th>
+                            <th>{{ $student->name }}</th>
+                            <th>{{ $student->total_grade }}</th>
+                        </td>
+                    @endforeach
+
                 @endslot
             @endcomponent
         </div>

@@ -12,4 +12,9 @@ class Grade extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function team()
+    {
+        return $this->belongsTo('App\Team');
+    }
 }

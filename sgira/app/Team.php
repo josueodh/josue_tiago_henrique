@@ -62,4 +62,37 @@ class Team extends Model
         }
         return $disapproved;
     }
+
+    public function getBonusStudentsAttribute()
+    {
+        $receive = [];
+        $students = $this->students()->get();
+        foreach ($students as $student) {
+            $total_student = $this->grades()->where('student_id', $student->id)->get();
+            if ($total_student->count() > 0) {
+                if (($total_student->sum('grade') / $total_student->count()) >= $this->value) {
+                    $student->total_grade = $total_student->sum('grade') / $total_student->count();
+                    array_push($receive, $student);
+                }
+            }
+        }
+        return $receive;
+    }
+
+
+    public function getNoBonusStudentsAttribute()
+    {
+        $not_receive = [];
+        $students = $this->students()->get();
+        foreach ($students as $student) {
+            $total_student = $this->grades()->where('student_id', $student->id)->get();
+            if ($total_student->count() > 0) {
+                if (($total_student->sum('grade') / $total_student->count()) < $this->value) {
+                    $student->total_grade = $total_student->sum('grade') / $total_student->count();
+                    array_push($not_receive, $student);
+                }
+            }
+        }
+        return $not_receive;
+    }
 }
