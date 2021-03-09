@@ -57,4 +57,6 @@ Route::middleware('auth')->group(function () {
         Route::get('/{category}', 'NotificationController@show')->name('notifications.show');
         Route::get('/leitura/{notify}', 'NotificationController@read')->name('notifications.read');
     });
+    Route::get('/exports','TeamController@csv')->name('teams.export');
+
 });

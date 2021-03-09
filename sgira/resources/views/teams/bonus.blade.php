@@ -31,7 +31,7 @@
         <div class="col-md-3 col-sm-12">
             @component('components.smallBox')
                 @slot('color', 'warning')
-                @slot('value', $team->value)
+                @slot('value', $team->rule)
                 @slot('title', 'Nota bonificação')
                 @slot('icon', 'fas fa-book-reader')
             @endcomponent

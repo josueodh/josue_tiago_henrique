@@ -133,9 +133,12 @@ class TeamController extends Controller
 
     public function bonificating(Team $team)
     {
-        if ($team->bonus == 1 && $team->status == 1) {
-            foreach ($team->students as $student) {
-                if ($student->grades->grade >= $team->rule) {
+
+        $students = $team->grades();
+        foreach ($students as $student) {
+            $total_student = $student->grades()->where('student_id', $student->id)->get();
+            if ($total_student->count() > 0) {
+                if (($total_student->sum('grade') / $total_student->count()) >= $team->rule) {
                     Bonification::create([
                         'student_id' => $student->id,
                         'type' => 'materia',
@@ -146,12 +149,52 @@ class TeamController extends Controller
                 }
             }
         }
+
+
+
+
+        // if ($team->bonus == 1 && $team->status == 1) {
+        //     foreach ($team->students as $student) {
+        //         foreach($student->grades as $grade)
+        //         {
+        //             if($grade->grade >= $team->rule)
+        //             {
+        //                 Bonification::create([
+        //                     'student_id' => $student->id,
+        //                     'type' => 'materia',
+        //                     'description' => 'Aluno teve media maior do que o criterio',
+        //                     'expirationDate' => date('Y-m-d', strtotime('+ 30 days', date('Y-m-d'))),
+        //                     'partner_id' => $team->partner_id,
+        //                 ]);
+        //             }
+        //         }
+                    //         if ($student->grades->grade >= $team->rule) {
+                    //             Bonification::create([
+                    //                 'student_id' => $student->id,
+                    //                 'type' => 'materia',
+                    //                 'description' => 'Aluno teve media maior do que o criterio',
+                    //                 'expirationDate' => date('Y-m-d', strtotime('+ 30 days', date('Y-m-d'))),
+                    //                 'partner_id' => $team->partner_id,
+                    //             ]);
+                    //         }
+                    //     }
+            // }
+        // }
         $team->status = !$team->status;
         $team->save();
+        return redirect()->route('teams.index')->with('success', true);
     }
 
     public function ranking(Team $team)
     {
         return view('teams.bonus', compact('team'));
+    }
+
+    public function csv(Team $team)
+    {
+        foreach($team->students as $student)
+        {
+            $student->name;
+        }
     }
 }
