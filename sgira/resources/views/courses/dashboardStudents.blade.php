@@ -66,19 +66,23 @@
                 @slot('body')
                     <tr class="text-center">
                         <td>1 <i class="fas fa-medal" style="color: #D7BE69"></i></td>
-                        <td>--</td>
-                        <td>97</td>
+                        <td>{{Auth::user()->course->top1->id  == Auth::user()->id ? Auth::user()->name : '---'}}</td>
+                        <td>{{Auth::user()->course->top1->ira }}</td>
                     </tr>
-                    <tr class="text-center">
-                        <td>2 <i class="fas fa-medal" style="color: #c0c0c0"></i></td>
-                        <td>--</td>
-                        <td>96</td>
-                    </tr>
-                    <tr class="text-center">
-                        <td>3 <i class="fas fa-medal" style="color: #cd7f32"></i></td>
-                        <td>Flávio</td>
-                        <td>95.8</td>
-                    </tr>
+                    @if(Auth::user()->course->top2)
+                        <tr class="text-center">
+                            <td>2 <i class="fas fa-medal" style="color: #c0c0c0"></i></td>
+                            <td>{{Auth::user()->course->top2->id  == Auth::user()->id ? Auth::user()->name : '---'}}</td>
+                            <td>{{Auth::user()->course->top2->ira }}</td>
+                        </tr>
+                    @endif
+                    @if(Auth::user()->course->top3)
+                        <tr class="text-center">
+                            <td>3 <i class="fas fa-medal" style="color: #cd7f32"></i></td>
+                            <td>{{Auth::user()->course->top3->id  == Auth::user()->id ? Auth::user()->name : '---'}}</td>
+                            <td>{{Auth::user()->course->top3->ira }}</td>
+                        </tr>
+                    @endif
                 @endslot
             @endcomponent
         </div>
