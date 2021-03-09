@@ -48,6 +48,7 @@
             </div>
         @enderror
     </div>
+    @if(!Route::is('students.show'))
     <div class="col-md-6 col-sm-12 form-group">
         <label for="confirm_password" class="required">Senha</label>
         <input type="password" class="form-control " required name="password"  id="password">
@@ -66,5 +67,6 @@
             </div>
         @enderror
     </div>
+    @endif
     <input type="hidden" id="is_admin" name="is_admin" value="0">
 </div>

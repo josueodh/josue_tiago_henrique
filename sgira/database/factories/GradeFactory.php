@@ -16,6 +16,6 @@ $factory->define(Grade::class, function (Faker $faker) {
     return [
         'student_id' => $student[$random_key],
         'team_id' => $team[$random_key_team],
-        'grade' => $faker->randomNumber($nbDigits = NULL, $strict = false),
+        'grade' => $faker->numberBetween($min = 0, $max = 100),
     ];
 });

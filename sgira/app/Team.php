@@ -33,6 +33,7 @@ class Team extends Model
         return $this->hasMany('App\Grade');
     }
 
+
     public function getApprovedAttribute()
     {
         $approved = 0;

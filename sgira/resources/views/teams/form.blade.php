@@ -70,7 +70,7 @@
         </div>
     @enderror
     </div>
-    <div class="form-group col-md-6 col-sm-12">
+    <div class="form-group col-sm-12">
         <label for="status" class="required">Status </label>
         <select name="status" class="form-control select2" id="status"  required>
             <option value="0">Inativo</option>
@@ -81,19 +81,6 @@
             <strong>{{ $message }}</strong>
         </div>
     @enderror
-    </div>
-        <div class="col-sm-12 col-md-6 form-group">
-        <label for="credits" class="required">Créditos</label>
-        <select name="credits"  required value="{{old('credits',$subject->credits ) }}" class="form-control select2 @error('credits') is-invalid @enderror multiple" id="credits">
-            <option></option>
-            <option>4</option>
-            <option>2</option>
-        </select>
-        @error('credits')
-            <div class="invalid-feedback">
-                <strong>{{ $message }}</strong>
-            </div>
-        @enderror
     </div>
     <div class="col-sm-12 form-group">
         <label for="bonus" class="required">Deseja bonificar?</label>
