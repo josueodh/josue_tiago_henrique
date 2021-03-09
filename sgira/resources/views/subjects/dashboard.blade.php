@@ -23,7 +23,7 @@
     <div class="col-md-4 col-sm-12">
         @component('components.smallBox')
             @slot('color', 'warning')
-            @slot('value', '80')
+            @slot('value', $subject->bonus)
             @slot('title', 'Nota mínima para bonificação')
             @slot('icon', 'fas fa-book-reader')
         @endcomponent

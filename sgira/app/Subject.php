@@ -22,4 +22,23 @@ class Subject extends Model
     {
         return $this->hasMany('App\Team');
     }
+
+    public function getbonusAttribute()
+    {
+        $teams = $this->teams;
+        $bonus  = 0;
+        $total_bonus = 0;
+        foreach ($teams as $team) {
+            if ($team->bonus) {
+                $total_bonus++;
+                $bonus += $team->value;
+            }
+        }
+
+        if ($total_bonus > 0) {
+            return number_format($bonus / $total_bonus, 1);
+        }
+
+        return 0;
+    }
 }

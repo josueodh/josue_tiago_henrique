@@ -21,7 +21,7 @@
     <div class="col-md-4 col-sm-12">
         @component('components.smallBox')
             @slot('color', 'secondary')
-            @slot('value', 25)
+            @slot('value', $course->bonus)
             @slot('title', 'Bonificações')
             @slot('icon', 'fas fa-award')
         @endcomponent

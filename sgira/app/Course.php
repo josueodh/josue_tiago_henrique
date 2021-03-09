@@ -35,6 +35,16 @@ class Course extends Model
             return $students->sum('ira') / $total;
         }
 
-        return;
+        return 0;
+    }
+
+    public function getBonusAttribute()
+    {
+        $total = 0;
+        foreach ($this->students as $student) {
+            $total += $student->bonifications()->count();
+        }
+
+        return $total;
     }
 }

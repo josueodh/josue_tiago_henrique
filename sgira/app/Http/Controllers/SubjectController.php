@@ -139,8 +139,8 @@ class SubjectController extends Controller
             $percentage_approved = number_format($total_approved / ($total_approved + $total_disapproved), 2) * 100;
             $averageIRA = number_format(collect($average)->sum() / collect($average)->count(), 2);
         } else {
-            $averageIRA = 'Nenhuma nota encontrada';
-            $percentage_approved = 'Nenhuma nota encontrada';
+            $averageIRA = 0;
+            $percentage_approved = 0;
         }
 
         return view('subjects.dashboard', compact('average', 'bonus', 'label', 'averageIRA', 'subject', 'percentage_approved', 'approved', 'disapproved'));
