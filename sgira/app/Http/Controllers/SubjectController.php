@@ -145,4 +145,81 @@ class SubjectController extends Controller
 
         return view('subjects.dashboard', compact('average', 'bonus', 'label', 'averageIRA', 'subject', 'percentage_approved', 'approved', 'disapproved'));
     }
+
+    public function bonus(Subject $subject)
+    {
+        //pega lista de turmas da materia
+        $teams = $subject->teams();
+
+        //declara um array que vai conter todos alunos de todas as turmas concatenados
+        $students = array();
+
+        //preenche array de alunos
+        foreach($teams as $team) {
+        array_push($students, $team->students());
+        }
+
+        //declara array com todas as Grades dessa materia, pegando pelo team_id
+        $grades = Grades::whereIn('team_id', $teams->id)->get();
+
+        //ordena array de Grades pela Nota
+        $grades = $grades.OrderBy('grade');
+
+        //pega os students bonificados
+        $orderedGoodStudents = GetGoodStudents($grades);
+
+        //pega os students nao bonificados
+        $orderedBadStudents = GetBadStudents($grades);
+
+        return view('subjects.bonus', compact('orderedGoodStudents', 'orderedBadStudents'));
+    }
+
+    public function GetGoodStudents($grades)
+    {
+        $goodGrades = array();
+        foreach ($grades as $grade) {
+            $team = Team::Find($grade->team_id);
+            if($grade->grade >= $team->rule) array_push($goodGrades, $grade->grade);
+        }
+
+        $goodGrades = $goodGrades.OrderByDescending();
+
+        $goodStudents = array();
+        foreach ($grades as $grade) {
+            $team = Team::Find($grade->team_id);
+            if($grade->grade >= $team->rule) array_push($goodStudents, User::Find($grade->student_id)->name);
+        }
+
+        $orderedGoodStudents = array();
+        for ($i=0; $i < $grades.length; $i++) { 
+            $orderedGoodStudents[$goodGrades[$i]] = $goodStudents[$i];
+        }
+
+        return $orderedGoodStudents;
+    }
+    
+
+    public function GetBadStudents($grades)
+    {
+        $badGrades = array();
+        foreach ($grades as $grade) {
+            $team = Team::Find($grade->team_id);
+            if($grade->grade >= $team->rule) array_push($badGrades, $grade->grade);
+        }
+
+        $badGrades = $badGrades.OrderByDescending();
+
+        $baddStudents = array();
+        foreach ($grades as $grade) {
+            $team = Team::Find($grade->team_id);
+            if($grade->grade >= $team->rule) array_push($badStudents, User::Find($grade->student_id)->name);
+        }
+
+        $orderedbadStudents = array();
+        for ($i=0; $i < $grades.length; $i++) { 
+            $orderedBadStudents[$badGrades[$i]] = $badStudents[$i];
+        }
+
+        return $orderedBadStudents;
+    }
 }
