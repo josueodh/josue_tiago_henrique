@@ -23,7 +23,7 @@
         <div class="col-md-3 col-sm-12">
             @component('components.smallBox')
                 @slot('color', 'info')
-                @slot('value', '85.5')
+                @slot('value', $team->average_ira)
                 @slot('title', 'IRA da Matéria')
                 @slot('icon', 'fas fa-calculator')
             @endcomponent
@@ -31,7 +31,7 @@
         <div class="col-md-3 col-sm-12">
             @component('components.smallBox')
                 @slot('color', 'warning')
-                @slot('value', $team->rule)
+                @slot('value', $team->rule ?? 0)
                 @slot('title', 'Nota bonificação')
                 @slot('icon', 'fas fa-book-reader')
             @endcomponent
