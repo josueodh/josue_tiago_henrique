@@ -66,19 +66,23 @@
                 @slot('body')
                     <tr class="text-center">
                         <td>1 <i class="fas fa-medal" style="color: #D7BE69"></i></td>
-                        <td>--</td>
-                        <td>97</td>
+                        <td>{{Auth::user()->course->top1->id  == Auth::user()->id ? Auth::user()->name : '---'}}</td>
+                        <td>{{Auth::user()->course->top1->ira }}</td>
                     </tr>
-                    <tr class="text-center">
-                        <td>2 <i class="fas fa-medal" style="color: #c0c0c0"></i></td>
-                        <td>--</td>
-                        <td>96</td>
-                    </tr>
-                    <tr class="text-center">
-                        <td>3 <i class="fas fa-medal" style="color: #cd7f32"></i></td>
-                        <td>Flávio</td>
-                        <td>95.8</td>
-                    </tr>
+                    @if(Auth::user()->course->top2)
+                        <tr class="text-center">
+                            <td>2 <i class="fas fa-medal" style="color: #c0c0c0"></i></td>
+                            <td>{{Auth::user()->course->top2->id  == Auth::user()->id ? Auth::user()->name : '---'}}</td>
+                            <td>{{Auth::user()->course->top2->ira }}</td>
+                        </tr>
+                    @endif
+                    @if(Auth::user()->course->top3)
+                        <tr class="text-center">
+                            <td>3 <i class="fas fa-medal" style="color: #cd7f32"></i></td>
+                            <td>{{Auth::user()->course->top3->id  == Auth::user()->id ? Auth::user()->name : '---'}}</td>
+                            <td>{{Auth::user()->course->top3->ira }}</td>
+                        </tr>
+                    @endif
                 @endslot
             @endcomponent
         </div>
@@ -93,21 +97,13 @@
                     </tr>
                 @endslot
                 @slot('body')
+                    @foreach(Auth::user()->winBonus as $team)
                     <tr class="text-center">
-                        <td>Algoritmos</td>
-                        <td>98</td>
-                        <td>80</td>
+                        <td>{{ $team->name }}</td>
+                        <td>{{ $team->actual_grade}}</td>
+                        <td>{{ $team->rule}}</td>
                     </tr>
-                    <tr class="text-center">
-                        <td>Cálculo I</td>
-                        <td>90</td>
-                        <td>75</td>
-                    </tr>
-                    <tr class="text-center">
-                        <td>G.A.</td>
-                        <td>87</td>
-                        <td>76</td>
-                    </tr>
+                    @endforeach
                 @endslot
             @endcomponent
         </div>

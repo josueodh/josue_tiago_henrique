@@ -122,4 +122,22 @@ class User extends Authenticatable
         }
         return number_format($result, 2);
     }
+
+    public function getWinBonusAttribute()
+    {
+        $teams = $this->teams()->where('status', 1)->get();
+        $win = [];
+        foreach ($teams as $team) {
+            if ($team->bonus == true) {
+                $grade = $team->grades()->where('student_id', $this->id)->get();
+                if ($grade->count() > 0) {
+                    if ($grade->sum('grade') / $grade->count() > $team->rule) {
+                        $team->actual_grade = $grade->sum('grade') / $grade->count();
+                        array_push($win, $team);
+                    }
+                }
+            }
+        }
+        return collect($win);
+    }
 }

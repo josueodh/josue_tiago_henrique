@@ -47,4 +47,43 @@ class Course extends Model
 
         return $total;
     }
+    public function getTop1Attribute()
+    {
+        $students = $this->students()->get();
+        $total_students = [];
+        foreach ($students as $student) {
+            $student->ira = $student->ira;
+            array_push($total_students, $student);
+        }
+        return collect($total_students)->sortByDesc('ira')->first();
+    }
+
+    public function getTop2Attribute()
+    {
+        $students = $this->students()->get();
+        $total_students = [];
+        foreach ($students as $student) {
+            $student->ira = $student->ira;
+            array_push($total_students, $student);
+        }
+        if (collect($total_students)->count() < 2) {
+            return;
+        }
+        return collect($total_students)->sortByDesc('ira')->shift()->first();
+    }
+
+    public function getTop3Attribute()
+    {
+        $students = $this->students()->get();
+        $total_students = [];
+        foreach ($students as $student) {
+            $student->ira = $student->ira;
+            array_push($total_students, $student);
+        }
+        if (collect($total_students)->count() < 3) {
+            return;
+        }
+
+        return collect($total_students)->sortByDesc('ira')->shift()->shift()->first();
+    }
 }

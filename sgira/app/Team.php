@@ -71,7 +71,7 @@ class Team extends Model
         foreach ($students as $student) {
             $total_student = $this->grades()->where('student_id', $student->id)->get();
             if ($total_student->count() > 0) {
-                if (($total_student->sum('grade') / $total_student->count()) >= $this->value) {
+                if (($total_student->sum('grade') / $total_student->count()) >= $this->rule) {
                     $student->total_grade = $total_student->sum('grade') / $total_student->count();
                     array_push($receive, $student);
                 }
@@ -88,7 +88,7 @@ class Team extends Model
         foreach ($students as $student) {
             $total_student = $this->grades()->where('student_id', $student->id)->get();
             if ($total_student->count() > 0) {
-                if (($total_student->sum('grade') / $total_student->count()) < $this->value) {
+                if (($total_student->sum('grade') / $total_student->count()) < $this->rule) {
                     $student->total_grade = $total_student->sum('grade') / $total_student->count();
                     array_push($not_receive, $student);
                 }

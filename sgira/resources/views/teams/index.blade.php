@@ -33,10 +33,22 @@
                         @can('view', $team)
                             <a href="{{ route('teams.show', $team->id) }}" class="btn btn-success"><i class="fas fa-eye"></i></a>
                         @endcan
-                        <!-- <form class="form-close" action="{{ route('teams.close',$team->id)}}" method="post">
-                            @csrf
-                            <button type="submit" class="btn btn-dark"><i class="fas fa-door-closed"></i></button>
-                        </form> -->
+                        @if(Auth::user()->is_admin == 2)
+                            @if($team->status == 0)
+                                <form class="form-close" action="{{ route('teams.export',$team->id)}}" method="get">
+                                    @csrf
+                                    <button type="submit" class="btn btn-dark"><i class="fas fa-file-csv"></i></button>
+                                </form>
+                            @endif
+                        @endif
+                        @if(Auth::user()->is_admin == 2)
+                            @if($team->status == 1)
+                                <form class="form-close" action="{{ route('teams.close',$team->id)}}" method="post">
+                                    @csrf
+                                    <button type="submit" class="btn btn-dark"><i class="fas fa-door-closed"></i></button>
+                                </form>
+                            @endif
+                        @endif
                         @can('delete', $team)
                         <form class="form-delete" action="{{ route('teams.destroy', $team->id) }}" method="post">
                             @csrf
@@ -56,4 +68,8 @@
 @push('scripts')
     <script src="{{ asset('js/components/dataTable.js') }}"></script>
     <script src="{{ asset('js/components/delete.js') }}"></script>
+    <script>
+
+
+    </script>
 @endpush
