@@ -93,21 +93,13 @@
                     </tr>
                 @endslot
                 @slot('body')
+                    @foreach(Auth::user()->winBonus as $team)
                     <tr class="text-center">
-                        <td>Algoritmos</td>
-                        <td>98</td>
-                        <td>80</td>
+                        <td>{{ $team->name }}</td>
+                        <td>{{ $team->actual_grade}}</td>
+                        <td>{{ $team->rule}}</td>
                     </tr>
-                    <tr class="text-center">
-                        <td>Cálculo I</td>
-                        <td>90</td>
-                        <td>75</td>
-                    </tr>
-                    <tr class="text-center">
-                        <td>G.A.</td>
-                        <td>87</td>
-                        <td>76</td>
-                    </tr>
+                    @endforeach
                 @endslot
             @endcomponent
         </div>
