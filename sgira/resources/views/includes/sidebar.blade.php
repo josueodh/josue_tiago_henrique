@@ -34,6 +34,7 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            @can('dashboard', App\User::class)
             <li class="nav-item">
                 <a href="{{ route('courses.dashboardStudent')}}" class="nav-link {{ Route::is('courses.dashboardStudent') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-chart-bar"></i>
@@ -42,22 +43,26 @@
                   </p>
                 </a>
             </li>
+            @endcan
+            @can('viewAny', App\User::class)
             <li class="nav-item">
-            <a href="{{ route('students.index') }}" class="nav-link {{ Route::is('students.*') ? 'active' : '' }}">
-                <i class="nav-icon fas fa-user-graduate"></i>
-                <p>
-                Alunos
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ route('teachers.index') }}" class="nav-link {{ Route::is('teachers.index') ? 'active' : '' }}">
-                <i class="nav-icon fas fa-chalkboard-teacher"></i>
-                <p>
-                Professores
-              </p>
-            </a>
-          </li>
+                <a href="{{ route('students.index') }}" class="nav-link {{ Route::is('students.*') ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-user-graduate"></i>
+                    <p>
+                    Alunos
+                </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('teachers.index') }}" class="nav-link {{ Route::is('teachers.index') ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-chalkboard-teacher"></i>
+                    <p>
+                    Professores
+                </p>
+                </a>
+            </li>
+          @endcan
+          @can('viewAny', App\Subject::class)
           <li class="nav-item">
             <a href="{{ route('subjects.index') }}" class="nav-link {{ Route::is('subjects.*') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-book"></i>
@@ -66,14 +71,17 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="{{ route('courses.index') }}" class="nav-link {{ Route::is('courses.index') ? 'active' : '' }}">
-            <i class="nav-icon fas fa-university"></i>
-              <p>
-                Cursos
-              </p>
-            </a>
-          </li>
+          @endcan
+          @can('viewAny', App\Course::class)
+            <li class="nav-item">
+                <a href="{{ route('courses.index') }}" class="nav-link {{ Route::is('courses.index') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-university"></i>
+                <p>
+                    Cursos
+                </p>
+                </a>
+            </li>
+          @endcan
           <li class="nav-item">
             <a href="{{ route('teams.index') }}" class="nav-link {{ Route::is('teams.*') ? 'active' : '' }}">
             <i class="nav-icon fas fa-users"></i>
@@ -82,22 +90,26 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
-              <a href="{{ route('partners.index') }}" class="nav-link {{ Route::is('partners.*') ? 'active' : '' }}">
-                <i class="nav-icon fas fa-handshake"></i>
-                <p>
-                    Parceiros
-                </p>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="{{ route('teachers.communicate') }}" class="nav-link {{ Route::is('teachers.communicate') ? 'active' : '' }}">
-                <i class="nav-icon far fa-envelope"></i>
-                <p>
-                    Comunicado
-                </p>
-            </a>
-        </li>
+          @can('viewAny',App\Partner::class)
+            <li class="nav-item">
+                <a href="{{ route('partners.index') }}" class="nav-link {{ Route::is('partners.*') ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-handshake"></i>
+                    <p>
+                        Parceiros
+                    </p>
+                </a>
+            </li>
+        @endcan
+        @can('communicate', App\User::class)
+            <li class="nav-item">
+                <a href="{{ route('teachers.communicate') }}" class="nav-link {{ Route::is('teachers.communicate') ? 'active' : '' }}">
+                    <i class="nav-icon far fa-envelope"></i>
+                    <p>
+                        Comunicado
+                    </p>
+                </a>
+            </li>
+        @endcan
           <li class="nav-item">
             <a href="{{ route('bonifications.index') }}" class="nav-link {{ Route::is('bonifications.*') ? 'active' : '' }}">
             <i class="nav-icon fas fa-gifts"></i>
@@ -106,7 +118,6 @@
               </p>
             </a>
           </li>
-
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

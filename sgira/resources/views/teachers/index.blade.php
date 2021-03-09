@@ -3,7 +3,9 @@
 @section('content')
     @component('components.index')
         @slot('title','Professores')
-        @slot('create', route('teachers.create'))
+        @can('create', App\User::class)
+            @slot('create', route('teachers.create'))
+        @endcan
         @slot('header')
         <tr>
             <th>Nome</th>
@@ -17,13 +19,17 @@
                     <td>{{ $teacher->name }}</td>
                     <td>{{ $teacher->registration }}</td>
                     <td class="button-index">
+                        @can('update', $teacher)
                         <a href="{{ route('teachers.edit', $teacher->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                        @endcan
                         <a href="{{ route('teachers.show', $teacher->id) }}" class="btn btn-success"><i class="fas fa-eye"></i></a>
+                        @can('delete', $teacher)
                         <form class="form-delete" action="{{ route('teachers.destroy', $teacher->id) }}" method="post">
                             @csrf
                             @method('delete')
                             <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
                         </form>
+                        @endcan
                     </td>
                 </tr>
             @endforeach

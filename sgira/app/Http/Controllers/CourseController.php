@@ -8,6 +8,17 @@ use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
+
+    /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->authorizeResource(Course::class, 'course');
+    }
+
     /**
      * Display a listing of the resource.
      *

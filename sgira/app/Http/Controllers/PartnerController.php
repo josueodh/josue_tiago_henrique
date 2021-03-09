@@ -8,6 +8,15 @@ use Illuminate\Http\Request;
 class PartnerController extends Controller
 {
     /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->authorizeResource(Partner::class, 'partner');
+    }
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

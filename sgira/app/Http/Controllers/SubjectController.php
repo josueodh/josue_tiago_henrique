@@ -10,6 +10,16 @@ use Illuminate\Http\Request;
 
 class SubjectController extends Controller
 {
+
+    /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->authorizeResource(Subject::class, 'subject');
+    }
     /**
      * Display a listing of the resource.
      *

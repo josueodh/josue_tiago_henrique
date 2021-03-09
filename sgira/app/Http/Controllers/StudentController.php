@@ -9,6 +9,15 @@ use App\User;
 class StudentController extends Controller
 {
     /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->authorizeResource(User::class, 'student');
+    }
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

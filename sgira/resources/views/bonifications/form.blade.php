@@ -27,7 +27,7 @@
             </div>
         @enderror
     </div>
-    <div class="form-group col-md-6 col-sm-12">
+    <div class="form-group  col-sm-12">
         <label for="year" class="required">Validade</label>
         <input type="date" required class="form-control" name="expirationDate" id="expirationDate" value="{{ old('expirationDate', $bonification->expirationDate) }}" >
         @error('expirationDate')
@@ -40,7 +40,7 @@
         <label for="description" class="required">Descrição </label>
         <input type="text" required class="form-control" name="description" id="description" value="{{ old('description', $bonification->description) }}">
     </div>
-    
+
     @if(Route::currentRouteName() !='bonifications.show')
     <div class="form-group col-12">
         <label for="img_1" class="required">Imagem do Parceiro</label>

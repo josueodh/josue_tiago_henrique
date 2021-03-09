@@ -12,6 +12,16 @@ use Illuminate\Support\Facades\Auth;
 
 class TeamController extends Controller
 {
+
+    /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->authorizeResource(Team::class, 'team');
+    }
     /**
      * Display a listing of the resource.
      *

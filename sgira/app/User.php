@@ -92,6 +92,6 @@ class User extends Authenticatable
             return  $grades->sum('0') / $grades->sum('1');
         }
 
-        return;
+        return 0;
     }
 }

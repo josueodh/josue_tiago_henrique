@@ -3,7 +3,9 @@
 @section('content')
     @component('components.index')
         @slot('title','Alunos')
-        @slot('create', route('students.create'))
+        @can('create', App\User::class)
+            @slot('create', route('students.create'))
+        @endcan
         @slot('header')
         <tr>
             <th>Nome</th>
@@ -13,19 +15,25 @@
         @endslot
         @slot('body')
             @foreach($students as $student)
-                <tr>
-                    <td>{{ $student->name }}</td>
-                    <td>{{ $student->registration }}</td>
-                    <td class="button-index">
-                        <a href="{{ route('students.edit', $student->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                        <a href="{{ route('students.show', $student->id) }}" class="btn btn-success"><i class="fas fa-eye"></i></a>
-                        <form class="form-delete" action="{{ route('students.destroy', $student->id) }}" method="post">
-                            @csrf
-                            @method('delete')
-                            <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                        </form>
-                    </td>
-                </tr>
+                @can('view', $student)
+                    <tr>
+                        <td>{{ $student->name }}</td>
+                        <td>{{ $student->registration }}</td>
+                        <td class="button-index">
+                            @can('update', $student)
+                                <a href="{{ route('students.edit', $student->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                            @endcan
+                             <a href="{{ route('students.show', $student->id) }}" class="btn btn-success"><i class="fas fa-eye"></i></a>
+                            @can('delete', $student)
+                                <form class="form-delete" action="{{ route('students.destroy', $student->id) }}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                                </form>
+                            @endcan
+                        </td>
+                    </tr>
+                @endcan
             @endforeach
         @endslot
     @endcomponent

@@ -3,7 +3,9 @@
 @section('content')
     @component('components.index')
         @slot('title','Cursos')
-        @slot('create', route('courses.create'))
+        @can('create', App\Course::class)
+            @slot('create', route('courses.create'))
+        @endcan
         @slot('header')
         <tr>
             <th>Nome</th>
@@ -18,12 +20,16 @@
                     <td>{{ $course->duration }}</td>
                     <td class="button-index">
                         <a href="{{ route('courses.dashboard', $course->id) }}" class="btn btn-success"><i class="fas fa-chart-line"></i></a>
-                        <a href="{{ route('courses.edit', $course->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                        <form class="form-delete" action="{{ route('courses.destroy', $course->id) }}" method="post">
-                            @csrf
-                            @method('delete')
-                            <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                        </form>
+                        @can('update', $course)
+                            <a href="{{ route('courses.edit', $course->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                        @endcan
+                        @can('delete', $course)
+                            <form class="form-delete" action="{{ route('courses.destroy', $course->id) }}" method="post">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                            </form>
+                        @endcan
                     </td>
                 </tr>
             @endforeach
