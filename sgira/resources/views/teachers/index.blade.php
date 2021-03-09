@@ -30,6 +30,7 @@
                             <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
                         </form>
                         @endcan
+                        <a href="{{ route('teachers.email', $teacher->id) }}" class="btn btn-success"><i class="far fa-envelope"></i></a>
                     </td>
                 </tr>
             @endforeach

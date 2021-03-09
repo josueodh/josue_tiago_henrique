@@ -105,6 +105,16 @@ class TeacherController extends Controller
         return view('teachers.communicate', compact('teams'));
     }
 
+    public function email(User $teacher)
+    {
+        $teacher = User::Find($teacher);
+        return view('teachers.email', compact('teams'));
+    }
+
+    public function emailPost(Request $request)
+    {
+        
+    }
 
     public function sendCommunicate(Request $request)
     {
