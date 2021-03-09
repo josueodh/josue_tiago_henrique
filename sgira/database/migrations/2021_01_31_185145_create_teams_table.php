@@ -24,7 +24,7 @@ class CreateTeamsTable extends Migration
             $table->boolean('bonus');
             $table->integer('value')->nullable();
             $table->integer('rule')->nullable();
-            $table->unsignedBigInteger('partner_id');
+            $table->unsignedBigInteger('partner_id')->nullable();
             $table->foreign('partner_id')->references('id')->on('partners')->onDelete('cascade');
             $table->timestamps();
         });
