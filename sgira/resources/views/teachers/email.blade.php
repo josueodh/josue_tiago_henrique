@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Comunicado')
+@section('title', 'Enviar email')
 @section('content')
 <div class="row">
     <div class="col-md-12">
@@ -18,7 +18,7 @@
 
                         </textarea>
                     </div>
-                    <input type="hidden" id="teacheremail" name="teacheremail" value=>
+                    <input type="hidden" id="teacher_id" name="teacher_id" value="{{ $teacher->id }}">
                 </form>
             </div>
             <div class="card-footer">
