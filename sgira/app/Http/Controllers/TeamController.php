@@ -134,52 +134,24 @@ class TeamController extends Controller
     public function bonificating(Team $team)
     {
 
-        $students = $team->grades();
-        foreach ($students as $student) {
-            $total_student = $student->grades()->where('student_id', $student->id)->get();
-            if ($total_student->count() > 0) {
-                if (($total_student->sum('grade') / $total_student->count()) >= $team->rule) {
-                    Bonification::create([
-                        'student_id' => $student->id,
-                        'type' => 'materia',
-                        'description' => 'Aluno teve media maior do que o criterio',
-                        'expirationDate' => date('Y-m-d', strtotime('+ 30 days', date('Y-m-d'))),
-                        'partner_id' => $team->partner_id,
-                    ]);
+        if ($team->bonus == true) {
+            $total_students = $team->students()->get();
+            foreach ($total_students as $student) {
+                $grade = $student->grades()->where('team_id', $team->id)->get();
+                if ($grade->count() > 0) {
+                    $grade = $grade->sum('grade') / $grade->count();
+                    if ($grade >= $team->rule) {
+                        Bonification::create([
+                            'student_id' => $student->id,
+                            'type' => 'materia',
+                            'description' => 'Aluno teve media maior do que o criterio',
+                            'expirationDate' => date('Y-m-d', strtotime('+ 30 days', date('Y-m-d'))),
+                            'partner_id' => $team->partner_id,
+                        ]);
+                    }
                 }
             }
         }
-
-
-
-
-        // if ($team->bonus == 1 && $team->status == 1) {
-        //     foreach ($team->students as $student) {
-        //         foreach($student->grades as $grade)
-        //         {
-        //             if($grade->grade >= $team->rule)
-        //             {
-        //                 Bonification::create([
-        //                     'student_id' => $student->id,
-        //                     'type' => 'materia',
-        //                     'description' => 'Aluno teve media maior do que o criterio',
-        //                     'expirationDate' => date('Y-m-d', strtotime('+ 30 days', date('Y-m-d'))),
-        //                     'partner_id' => $team->partner_id,
-        //                 ]);
-        //             }
-        //         }
-                    //         if ($student->grades->grade >= $team->rule) {
-                    //             Bonification::create([
-                    //                 'student_id' => $student->id,
-                    //                 'type' => 'materia',
-                    //                 'description' => 'Aluno teve media maior do que o criterio',
-                    //                 'expirationDate' => date('Y-m-d', strtotime('+ 30 days', date('Y-m-d'))),
-                    //                 'partner_id' => $team->partner_id,
-                    //             ]);
-                    //         }
-                    //     }
-            // }
-        // }
         $team->status = !$team->status;
         $team->save();
         return redirect()->route('teams.index')->with('success', true);
@@ -192,8 +164,7 @@ class TeamController extends Controller
 
     public function csv(Team $team)
     {
-        foreach($team->students as $student)
-        {
+        foreach ($team->students as $student) {
             $student->name;
         }
     }
