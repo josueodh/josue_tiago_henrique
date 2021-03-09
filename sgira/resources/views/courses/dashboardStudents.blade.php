@@ -10,7 +10,7 @@
     </div>
 </div>
     <div class="row">
-        <div class="col-md-3 col-sm-12">
+        <div class="col-md-4 col-sm-12">
             @component('components.smallBox')
                 @slot('color', 'success')
                 @slot('value', Auth::user()->ira)
@@ -18,7 +18,7 @@
                 @slot('icon', 'fas fa-graduation-cap')
             @endcomponent
         </div>
-        <div class="col-md-3 col-sm-12">
+        <div class="col-md-4 col-sm-12">
             @component('components.smallBox')
                 @slot('color', 'info')
                 @slot('value', Auth::user()->course->average_ira)
@@ -26,7 +26,16 @@
                 @slot('icon', 'fas fa-calculator')
             @endcomponent
         </div>
-        <div class="col-md-3 col-sm-12">
+
+        <div class="col-md-4 col-sm-12">
+            @component('components.smallBox')
+                @slot('color', 'warning')
+                @slot('value', Auth::user()->bonifications()->count())
+                @slot('title', 'Bonificações ganhas')
+                @slot('icon', 'fas fa-gift')
+            @endcomponent
+        </div>
+        <div class="col-md-6 col-sm-12">
             @component('components.smallBox')
                 @slot('color', 'danger')
                 @slot('value', Auth::user()->iraGoal)
@@ -34,12 +43,12 @@
                 @slot('icon', 'fas fa-chart-line')
             @endcomponent
         </div>
-        <div class="col-md-3 col-sm-12">
+        <div class="col-md-6 col-sm-12">
             @component('components.smallBox')
-                @slot('color', 'warning')
-                @slot('value', Auth::user()->bonifications()->count())
-                @slot('title', 'Bonificações ganhas')
-                @slot('icon', 'fas fa-gift')
+                @slot('color', 'success')
+                @slot('value', Auth::user()->required_grade)
+                @slot('title', 'Nota necessária')
+                @slot('icon', 'fas fa-bullseye')
             @endcomponent
         </div>
     </div>

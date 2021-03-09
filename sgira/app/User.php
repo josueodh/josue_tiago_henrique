@@ -94,4 +94,32 @@ class User extends Authenticatable
 
         return 0;
     }
+
+    public function getRequiredGradeAttribute()
+    {
+        $hours = $this->course->duration / 30;
+        $teams = Team::where('status', false)->whereHas('students', function ($query) {
+            return $query->where('student_id', $this->id);
+        })->get();
+        $grades = $teams->map(function ($team) {
+            $grade = $team->grades()->where('student_id', $this->id)->get();
+            if ($grade->count() > 0) {
+                return [$team->subject->credits * $grade->sum('grade') / $grade->count(), $team->subject->credits];
+            } else {
+                return [0, 0];
+            }
+        });
+        $rest = $hours - ($grades->sum('1'));
+        $total = $grades->sum('0');
+        $result = $hours * $this->iraGoal;
+        $result = $result - $total;
+        $result = $result / $rest;
+        if ($result > 100) {
+            return 'Meta inalcançável';
+        }
+        if ($result < 0) {
+            return 'Meta alcaçada';
+        }
+        return number_format($result, 2);
+    }
 }
