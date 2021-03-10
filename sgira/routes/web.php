@@ -34,6 +34,8 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('/alunos', 'StudentController')->names('students')->parameters(['alunos' => 'student']);
 
+    Route::get('/professores/email/{teacher}', 'TeacherController@email')->name('teachers.email');
+    Route::post('/professores/email/', 'TeacherController@emailPost')->name('teachers.emailPost');
     Route::resource('/professores', 'TeacherController')->names('teachers')->parameters(['professores' => 'teacher']);
     Route::post('/teste/{team}', 'TeamController@bonificating')->name('teams.close');
 

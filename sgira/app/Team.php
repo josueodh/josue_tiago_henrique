@@ -96,4 +96,23 @@ class Team extends Model
         }
         return $not_receive;
     }
+
+    public function getAverageIraAttribute()
+    {
+        $students = $this->students;
+        $result = 0;
+        $total_with_grade = 0;
+        foreach ($students as $student) {
+            $grade = $student->grades()->sum('grade');
+            $total = $student->grades()->count();
+            if ($total > 0) {
+                $result += $grade / $total;
+                $total_with_grade++;
+            }
+        }
+        if ($total_with_grade > 0) {
+            return $result / $total_with_grade;
+        }
+        return 0;
+    }
 }
