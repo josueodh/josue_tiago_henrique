@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::middleware('auth')->group(function () {
+    Route::get('/exports/{team}','TeamController@csv')->name('teams.export');
+
 
     Route::get('/dashboard/aluno', 'CourseController@dashboardStudent')->name('courses.dashboardStudent');
     Route::get('/', function () {
@@ -57,6 +59,5 @@ Route::middleware('auth')->group(function () {
         Route::get('/{category}', 'NotificationController@show')->name('notifications.show');
         Route::get('/leitura/{notify}', 'NotificationController@read')->name('notifications.read');
     });
-    Route::get('/exports','TeamController@csv')->name('teams.export');
 
 });

@@ -35,10 +35,7 @@
                         @endcan
                         @if(Auth::user()->is_admin == 2)
                             @if($team->status == 0)
-                                <form class="form-close" action="{{ route('teams.export',$team->id)}}" method="get">
-                                    @csrf
-                                    <button type="submit" class="btn btn-dark"><i class="fas fa-file-csv"></i></button>
-                                </form>
+                                <a href="{{ route('teams.export',$team->id)}}" class="btn btn-dark"><i class="fas fa-file-csv"></i></a>
                             @endif
                         @endif
                         @if(Auth::user()->is_admin == 2)
@@ -68,8 +65,4 @@
 @push('scripts')
     <script src="{{ asset('js/components/dataTable.js') }}"></script>
     <script src="{{ asset('js/components/delete.js') }}"></script>
-    <script>
-
-
-    </script>
 @endpush
