@@ -25,7 +25,7 @@
 			window.myLine = new Chart(ctx, config);
 		};
         var dataIRA = {!! json_encode($ira) !!};
-        var dataIRACourse = {!! json_encode($ira_all_students) !!};
+        var dataIRACourse = {!! json_encode($iraAllStudents) !!};
         var label = {!! json_encode($label) !!};
 		var config = {
 			type: 'line',

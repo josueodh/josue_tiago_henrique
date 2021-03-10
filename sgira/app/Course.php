@@ -34,7 +34,6 @@ class Course extends Model
         if ($total > 0) {
             return $students->sum('ira') / $total;
         }
-
         return 0;
     }
 

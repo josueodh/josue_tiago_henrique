@@ -116,7 +116,7 @@ class TeacherController extends Controller
     {
         $teacher = User::Find($request->teacher_id);
         $data = $request->all();
-        Mail::to('josuedelgadoheringer98@gmail.com')->send(new Email($teacher, $data));
+        Mail::to($teacher->email)->send(new Email($teacher, $data));
         return redirect()->route('teachers.index')->with('success', true);
     }
 
@@ -125,7 +125,8 @@ class TeacherController extends Controller
         $team = Team::firstWhere('id', $request->to);
         $data = $request->all();
         foreach ($team->students as $student) {
-            Mail::to('josuedelgadoheringer98@gmail.com')->send(new Communication(request()->user(), $data));
+            Mail::to($student->email)->send(new Communication(request()->user(), $data));
         }
+        return redirect()->route('teams.index')->with('success', true);
     }
 }
