@@ -7,6 +7,8 @@ use App\Team;
 use App\User;
 use App\Bonification;
 use App\Partner;
+use Excel;
+use App\Exports\TeamsExport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -145,7 +147,7 @@ class TeamController extends Controller
                             'student_id' => $student->id,
                             'type' => 'materia',
                             'description' => 'Aluno teve media maior do que o criterio',
-                            'expirationDate' => date('Y-m-d', strtotime('+ 30 days', date('Y-m-d'))),
+                            'expirationDate' => date('Y-m-d',strtotime(date(now()) . '+ 30 days')),
                             'partner_id' => $team->partner_id,
                         ]);
                     }
@@ -164,8 +166,7 @@ class TeamController extends Controller
 
     public function csv(Team $team)
     {
-        foreach ($team->students as $student) {
-            $student->name;
-        }
+        return Excel::download(new TeamsExport($team), $team->name . '.csv');
     }
 }
+
