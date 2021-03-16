@@ -116,7 +116,7 @@ class TeacherController extends Controller
     {
         $teacher = User::Find($request->teacher_id);
         $data = $request->all();
-        Mail::to($teacher->email)->send(new Email($teacher, $data));
+        Mail::to('josuedelgadoheringer98@gmail.com')->send(new Email($teacher, $data));
         return redirect()->route('teachers.index')->with('success', true);
     }
 

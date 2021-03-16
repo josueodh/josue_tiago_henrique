@@ -68,7 +68,12 @@ class Course extends Model
         if (collect($total_students)->count() < 2) {
             return;
         }
-        return collect($total_students)->sortByDesc('ira')->shift()->first();
+        $aluno = collect($total_students)->sortByDesc('ira')->shift();
+
+
+        return collect($total_students)->sortByDesc('ira')->filter(function ($student) use ($aluno) {
+            return $aluno->id != $student->id;
+        })->first();
     }
 
     public function getTop3Attribute()
@@ -82,7 +87,15 @@ class Course extends Model
         if (collect($total_students)->count() < 3) {
             return;
         }
+        $aluno = collect($total_students)->sortByDesc('ira')->shift();
 
-        return collect($total_students)->sortByDesc('ira')->shift()->shift()->first();
+
+        $aluno2 = collect($total_students)->sortByDesc('ira')->filter(function ($student) use ($aluno) {
+            return $aluno->id != $student->id;
+        })->first();
+
+        return collect($total_students)->sortBy('ira')->filter(function ($student) use ($aluno, $aluno2) {
+            return $aluno->id != $student->id && $aluno2->id != $student->id;
+        })->first();
     }
 }
